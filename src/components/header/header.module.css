@@ -1,0 +1,47 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 14px 30px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.logo {
+  text-decoration: none;
+  color: #ef3124;
+  font-size: 32px;
+  line-height: 26px;
+  font-weight: bold;
+}
+
+.menuToggle {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 10px;
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.menuToggle span {
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 28px;
+  font-feature-settings: 'ss01';
+  font-family: 'Styrene UI', Arial, sans-serif;
+}
+
+.menuToggle svg {
+  width: 32px;
+  height: auto;
+}
