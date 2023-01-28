@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { AppLayout } from '../components/app-layout';
+import { AppLayout } from 'components/app-layout';
 import { PATHS } from './constants';
 
 export const router = createBrowserRouter([
