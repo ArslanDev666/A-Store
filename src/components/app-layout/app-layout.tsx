@@ -2,9 +2,9 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Header } from 'components/header';
+import { Footer } from 'components/footer';
 
 import styles from './app-layout.module.css';
-import { Footer } from 'components/footer';
 
 type PropsType = {
   hasFooter?: boolean;

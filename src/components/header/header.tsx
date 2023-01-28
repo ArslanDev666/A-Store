@@ -13,7 +13,7 @@ const Header = () => {
         A-Store
       </Link>
 
-      <button className={styles.menuToggle} type="button">
+      <button className={styles.menuToggle} type='button'>
         <span>меню</span>
         <ListMIcon />
       </button>
