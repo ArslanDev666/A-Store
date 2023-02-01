@@ -10,18 +10,14 @@ type PropsType = {
   hasFooter?: boolean;
 };
 
-const AppLayout = ({ hasFooter = true }: PropsType) => {
-  return (
-    <div className={styles.layout}>
-      <Header />
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <Outlet />
-        </div>
-        {hasFooter && <Footer />}
-      </div>
+const AppLayout = ({ hasFooter = true }: PropsType) => (
+  <div className={styles.layout}>
+    <Header />
+    <div className={styles.content}>
+      <Outlet />
     </div>
-  );
-};
+    {hasFooter && <Footer />}
+  </div>
+);
 
 export { AppLayout };
