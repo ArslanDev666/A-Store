@@ -9,7 +9,7 @@ import styles from './header.module.css';
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Link to={PATHS['main-page']} className={styles.logo}>
+      <Link to={PATHS['home-page']} className={styles.logo}>
         A-Store
       </Link>
 

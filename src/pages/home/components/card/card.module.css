@@ -1,0 +1,55 @@
+
+.card {
+  position: relative;
+
+  width: 100%;
+
+  text-decoration: none;
+
+  color: var(--color-light-text-primary);
+}
+
+.card::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  content: '';
+  transition: opacity .25s ease-in-out;
+
+  opacity: 0;
+  background-color: var(--color-dark-bg-primary-alpha-20);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.cardImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardContent {
+  position: relative;
+
+  padding: var(--gap-l) var(--gap-2xl);
+}
+
+@media screen and (max-width: 968px) {
+  .cardImage {
+    object-position: 0% 10%;
+  }
+}

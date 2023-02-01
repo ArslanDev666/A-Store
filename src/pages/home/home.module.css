@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+
+  height: calc(100vh - var(--height-header));
+}
+
+@media screen and (max-width: 968px) {
+  .root {
+    flex-wrap: wrap;
+  }
+}

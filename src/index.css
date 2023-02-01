@@ -1,3 +1,7 @@
+@import url('@alfalab/core-components/vars/colors-indigo.css');
+@import url('@alfalab/core-components/vars/gaps.css');
+@import url('@alfalab/core-components/vars/typography.css');
+
 @font-face {
   font-family: 'Styrene UI';
   src: url('https://alfabank.servicecdn.ru/media/fonts/styrene-ui/styrene-ui_regular.woff2') format('woff2'),
@@ -25,6 +29,10 @@
   font-style: normal;
 }
 
+:root {
+  --height-header: 60px;
+}
+
 *,
 *::after,
 *::before {
@@ -34,14 +42,10 @@
 body {
   margin: 0;
 
-  font-family: 'Styrene UI', Arial, sans-serif;
+  font-family: var(--font-family-styrene);
   font-feature-settings: 'ss01';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 h1,

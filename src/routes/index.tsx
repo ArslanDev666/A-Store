@@ -1,15 +1,23 @@
 import { createBrowserRouter } from 'react-router-dom';
+
 import { AppLayout } from 'components/app-layout';
+import { HomePage } from 'pages/home';
+
 import { PATHS } from './constants';
 
 export const router = createBrowserRouter([
   {
-    element: <AppLayout />,
+    element: <AppLayout hasFooter={false} />,
     children: [
       {
-        path: PATHS['main-page'],
-        element: <div>Главная страница</div>,
+        path: PATHS['home-page'],
+        element: <HomePage />,
       },
+    ],
+  },
+  {
+    element: <AppLayout />,
+    children: [
       {
         path: PATHS['made-in-alfa'],
         element: <div>Сделано в Альфе</div>,

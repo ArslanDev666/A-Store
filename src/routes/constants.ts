@@ -1,5 +1,5 @@
 export const PATHS = {
-  'main-page': '/',
+  'home-page': '/',
   'made-in-alfa': '/sdelano-v-alfe',
   'own-design': '/svoy-dizain',
   contact: '/contact',

@@ -1,5 +1,6 @@
 .header {
   position: sticky;
+  z-index: 99;
   top: 0;
   right: 0;
   left: 0;
@@ -9,17 +10,18 @@
   justify-content: space-between;
 
   width: 100%;
+  height: var(--height-header);
   margin: 0 auto;
-  padding: 14px 30px;
+  padding: 0 var(--gap-2xl);
 
-  background: #fff;
-  gap: 30px;
+  background: var(--color-light-bg-primary);
+  gap: var(--gap-2xl);
 }
 
 .logo {
   text-decoration: none;
 
-  color: #ef3124;
+  color: var(--color-dark-text-accent);
 
   font-size: 32px;
   font-weight: bold;
@@ -37,15 +39,15 @@
 
   border: none;
   background: none;
-  gap: 10px;
+  gap: var(--gap-xs);
 }
 
 .menuToggle span {
   letter-spacing: 1px;
 
-  font-family: 'Styrene UI', Arial, sans-serif;
+  font-family: var(--font-family-styrene);
   font-size: 32px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 27px;
   font-feature-settings: 'ss01';
 }
