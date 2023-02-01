@@ -4,8 +4,18 @@ import { Typography } from '@alfalab/core-components/typography';
 import styles from './card.module.css';
 
 type PropsType = {
+  /**
+   * Ссылка на картинку карточки
+   */
   image: string;
+  /**
+   * Ссылка на страницу,
+   * на которую пользователь перейдет по клику на карточку
+   */
   to: string;
+  /**
+   * Заголовок карточки,
+   */
   title: string;
 };
 

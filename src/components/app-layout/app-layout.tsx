@@ -7,6 +7,10 @@ import { Footer } from 'components/footer';
 import styles from './app-layout.module.css';
 
 type PropsType = {
+  /**
+   * Будет ли отображаться футер
+   * По умолчанию: true
+   */
   hasFooter?: boolean;
 };
 

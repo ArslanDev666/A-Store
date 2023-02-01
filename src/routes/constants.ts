@@ -1,4 +1,4 @@
-export const PATHS = {
+export const ROUTES = {
   'home-page': '/',
   'made-in-alfa': '/sdelano-v-alfe',
   'own-design': '/svoy-dizain',
