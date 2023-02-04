@@ -1,0 +1,46 @@
+.navigation {
+  position: relative;
+
+  height: 100%;
+}
+
+.navigationClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.navigationWrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding: 48px 40px 38px;
+}
+
+.navigationContent {
+  margin-bottom: 10px;
+}
+
+.navigationList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navigationCopyright {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.navigationFooter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+
+.navigationSocialLink {
+  --icon-button-s-size: auto;
+  border-radius: 50%;
+}

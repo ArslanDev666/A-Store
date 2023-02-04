@@ -28,7 +28,7 @@
   line-height: 26px;
 }
 
-.menuToggle {
+.sidebarToggle {
   display: flex;
   align-items: flex-start;
   flex-direction: row-reverse;
@@ -42,7 +42,7 @@
   gap: var(--gap-xs);
 }
 
-.menuToggle span {
+.sidebarToggle span {
   letter-spacing: 1px;
 
   font-family: var(--font-family-styrene);
@@ -52,7 +52,21 @@
   font-feature-settings: 'ss01';
 }
 
-.menuToggle svg {
+.sidebarToggle svg {
   width: 32px;
   height: auto;
+}
+
+.sidebar {
+  background: #000;
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    --drawer-width: 100%;
+  }
+
+  .sidebarToggle span {
+    display: none;
+  }
 }
