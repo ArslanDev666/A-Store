@@ -1,16 +1,19 @@
 import React from 'react';
-import { DrawerContext } from '@alfalab/core-components/drawer';
-import { Link } from '@alfalab/core-components/link';
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from 'routes/constants';
 
+import { DrawerContext } from '@alfalab/core-components/drawer';
+import { IconButton } from '@alfalab/core-components/icon-button';
+import { Link } from '@alfalab/core-components/link';
+import { Typography } from '@alfalab/core-components/typography';
+
+import { CloseLIcon } from '@alfalab/icons-classic/CloseLIcon';
 import { MailMIcon } from '@alfalab/icons-glyph/MailMIcon';
 import { PhoneMIcon } from '@alfalab/icons-glyph/PhoneMIcon';
 import { WhatsappMIcon } from '@alfalab/icons-logotype/WhatsappMIcon';
+
 import { Title } from 'components/ui/title';
-import { IconButton } from '@alfalab/core-components/icon-button';
-import { CloseLIcon } from '@alfalab/icons-classic/CloseLIcon';
-import { Typography } from '@alfalab/core-components/typography';
+
+import { ROUTES } from 'routes/constants';
 
 import styles from './navigation-sidebar.module.css';
 

@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { ListMIcon } from '@alfalab/icons-glyph/ListMIcon';
 import { Drawer } from '@alfalab/core-components/drawer';
 
-import { NavigationSidebar } from './components';
+import { ListMIcon } from '@alfalab/icons-glyph/ListMIcon';
 
 import { ROUTES } from 'routes/constants';
 
 import styles from './header.module.css';
+
+import { NavigationSidebar } from './components';
 
 const Header = () => {
   const location = useLocation();

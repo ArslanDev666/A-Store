@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { Typography } from '@alfalab/core-components/typography';
+
 import styles from './card.module.css';
 
 type PropsType = {

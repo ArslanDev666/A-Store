@@ -1,12 +1,15 @@
 import React from 'react';
 
+import { Typography } from '@alfalab/core-components/typography';
+
+import { ROUTES } from 'routes/constants';
+
 import madeInAlfaImage from 'assets/images/home-page/banner-made-in-alfa.jpeg';
 import ownDesignImage from 'assets/images/home-page/banner-own-design.jpeg';
 
 import styles from './home.module.css';
+
 import { Card } from './components';
-import { ROUTES } from 'routes/constants';
-import { Typography } from '@alfalab/core-components/typography';
 
 const HomePage = () => {
   return (

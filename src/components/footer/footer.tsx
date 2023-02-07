@@ -2,8 +2,9 @@ import React from 'react';
 
 import { Typography } from '@alfalab/core-components/typography';
 
-import styles from './footer.module.css';
 import { Container } from 'components/ui/container';
+
+import styles from './footer.module.css';
 
 const CURRENT_YEAR = new Date().getFullYear();
 

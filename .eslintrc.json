@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "plugins": ["simple-import-sort", "import"],
+  "extends": ["react-app", "react-app/jest"],
+  "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react", "^@?\\w"],
+          ["^@alfalab/core-components(/.*|$)"],
+          ["^@alfalab/icons-.*(/.*|$)"],
+          ["^components(/.*|$)"],
+          ["^services(/.*|$)"],
+          ["^store(/.*|$)"],
+          ["^utils(/.*|$)"],
+          ["^routes(/.*|$)"],
+          ["^types(/.*|$)"],
+          ["^assets(/.*|$)"],
+          ["^.+\\.css$"],
+          ["^\\u0000"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
+        ]
+      }
+    ]
+  }
+}
