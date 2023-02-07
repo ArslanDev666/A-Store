@@ -6,8 +6,8 @@
 
 .navigationClose {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: var(--gap-s);
+  right: var(--gap-s);
 }
 
 .navigationWrapper {
@@ -15,28 +15,28 @@
   flex-direction: column;
 
   height: 100%;
-  padding: 48px 40px 38px;
+  padding: var(--gap-4xl) var(--gap-3xl) var(--gap-2xl);
 }
 
 .navigationContent {
-  margin-bottom: 10px;
+  margin-bottom: var(--gap-s);
 }
 
 .navigationList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--gap-s);
 }
 
 .navigationCopyright {
   margin-top: auto;
-  margin-bottom: 20px;
+  margin-bottom: var(--gap-l);
 }
 
 .navigationFooter {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: var(--gap-m);
 
 }
 

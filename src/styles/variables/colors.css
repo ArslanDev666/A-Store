@@ -1,0 +1,10 @@
+:root {
+  --color-primary: #ef3124;
+  --color-black: #000;
+  --color-black-alpha-20: rgb(0 0 0 / 20%);
+  --color-white: #fff;
+  --color-text-primary: #ef3124;
+  --color-text-black: #000;
+  --color-text-black-alpha-20: rgb(0 0 0 / 20%);
+  --color-text-white: #fff;
+}

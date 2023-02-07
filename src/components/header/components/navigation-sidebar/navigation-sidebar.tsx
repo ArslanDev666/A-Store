@@ -101,8 +101,7 @@ const NavigationSidebar = () => {
           {SOCIALS_LINKS.map((link) => (
             <li key={link.href} className={styles.navigationSocialLink}>
               <IconButton
-                view='transparent'
-                colors='inverted'
+                view='tertiary'
                 icon={link.icon}
                 href={link.href}
                 target='_blank'

@@ -1,5 +1,5 @@
 .footer {
-  padding-bottom: 80px;
+  padding-bottom: var(--gap-6xl);
 
-  color: rgb(0 0 0 / 20%);
+  color: var(--color-text-black-alpha-20);
 }

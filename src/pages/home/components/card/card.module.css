@@ -6,7 +6,7 @@
 
   text-decoration: none;
 
-  color: var(--color-light-text-primary);
+  color: var(--color-text-black);
 }
 
 .card::after {
@@ -20,7 +20,7 @@
   transition: opacity .25s ease-in-out;
 
   opacity: 0;
-  background-color: var(--color-dark-bg-primary-alpha-20);
+  background-color: var(--color-black-alpha-20);
 }
 
 .card:hover::after {

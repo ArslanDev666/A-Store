@@ -14,14 +14,14 @@
   margin: 0 auto;
   padding: 0 var(--gap-2xl);
 
-  background: var(--color-light-bg-primary);
+  background: var(--color-white);
   gap: var(--gap-2xl);
 }
 
 .logo {
   text-decoration: none;
 
-  color: var(--color-dark-text-accent);
+  color: var(--color-text-primary);
 
   font-size: 32px;
   font-weight: bold;
@@ -58,7 +58,7 @@
 }
 
 .sidebar {
-  background: #000;
+  background: var(--color-black);
 }
 
 @media screen and (max-width: 480px) {
