@@ -17,15 +17,15 @@ import styles from './navigation-sidebar.module.css';
 const NAVIGATION_LINKS = [
   {
     text: 'Сделано в Альфе',
-    href: ROUTES['made-in-alfa'],
+    href: ROUTES.madeInAlfa,
   },
   {
     text: 'Свой дизайн',
-    href: ROUTES['own-design'],
+    href: ROUTES.ownDesign,
   },
   {
     text: 'Контакты',
-    href: ROUTES['contact'],
+    href: ROUTES.contact,
   },
 ];
 

@@ -18,13 +18,9 @@ const HomePage = () => {
       <Card
         image={madeInAlfaImage}
         title='Сделано в Альфе'
-        to={ROUTES['made-in-alfa']}
+        to={ROUTES.madeInAlfa}
       />
-      <Card
-        image={ownDesignImage}
-        title='Свой дизайн'
-        to={ROUTES['own-design']}
-      />
+      <Card image={ownDesignImage} title='Свой дизайн' to={ROUTES.ownDesign} />
     </div>
   );
 };

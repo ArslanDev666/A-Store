@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     element: <AppLayout hasFooter={false} />,
     children: [
       {
-        path: ROUTES['home-page'],
+        path: ROUTES.homePage,
         element: <HomePage />,
       },
     ],
@@ -19,19 +19,19 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
-        path: ROUTES['made-in-alfa'],
+        path: ROUTES.madeInAlfa,
         element: <div>Сделано в Альфе</div>,
       },
       {
-        path: ROUTES['own-design'],
+        path: ROUTES.ownDesign,
         element: <div>Мой дизайн</div>,
       },
       {
-        path: ROUTES['contact'],
+        path: ROUTES.contact,
         element: <div>Контакты</div>,
       },
       {
-        path: ROUTES['cart'],
+        path: ROUTES.cart,
         element: <div>Корзина</div>,
       },
     ],

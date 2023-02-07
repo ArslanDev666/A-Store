@@ -1,7 +1,7 @@
 export const ROUTES = {
-  'home-page': '/',
-  'made-in-alfa': '/sdelano-v-alfe',
-  'own-design': '/svoy-dizain',
+  homePage: '/',
+  madeInAlfa: '/sdelano-v-alfe',
+  ownDesign: '/svoy-dizain',
   contact: '/contact',
   cart: '/cart',
 };

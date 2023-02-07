@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link to={ROUTES['home-page']} className={styles.logo}>
+      <Link to={ROUTES.homePage} className={styles.logo}>
         A-Store
       </Link>
 
