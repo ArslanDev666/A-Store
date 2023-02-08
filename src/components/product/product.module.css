@@ -1,0 +1,19 @@
+.product {
+  text-decoration: none;
+
+  color: var(--color-text-black);
+}
+
+.productImage {
+  position: relative;
+
+  display: flex;
+
+  aspect-ratio: 1 / 1;
+}
+
+.productImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

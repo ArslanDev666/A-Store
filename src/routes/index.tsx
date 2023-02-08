@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { HomePage } from 'pages/home';
+import { MadeInAlfaPage } from 'pages/made-in-alfa';
 
 import { AppLayout } from 'components/app-layout';
 
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.madeInAlfa,
-        element: <div>Сделано в Альфе</div>,
+        element: <MadeInAlfaPage />,
       },
       {
         path: ROUTES.ownDesign,

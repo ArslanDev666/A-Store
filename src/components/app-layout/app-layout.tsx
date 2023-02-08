@@ -8,8 +8,7 @@ import styles from './app-layout.module.css';
 
 type PropsType = {
   /**
-   * Будет ли отображаться футер
-   * По умолчанию: true
+   * Будет ли отображаться футер. По умолчанию: true
    */
   hasFooter?: boolean;
 };
