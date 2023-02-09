@@ -17,7 +17,7 @@ type PropsType = {
   /**
    * Вариант цвета для текста заголовка. Опционально
    */
-  colorTitle?: 'current' | 'default';
+  colorTitle?: 'primary' | 'default';
 };
 
 const SectionTitle = ({
@@ -33,7 +33,7 @@ const SectionTitle = ({
         font='styrene'
         weight='bold'
         className={cn(styles.title, {
-          [styles.titleCurrent]: colorTitle === 'current',
+          [styles.titlePrimary]: colorTitle === 'primary',
           [styles.titleDefault]: colorTitle === 'default',
         })}
       >

@@ -5,11 +5,10 @@
 }
 
 .navigationClose {
+  --icon-button-s-size: auto;
   position: absolute;
   top: var(--gap-s);
   right: var(--gap-s);
-
-  --icon-button-s-size: auto;
 }
 
 .navigationWrapper {
