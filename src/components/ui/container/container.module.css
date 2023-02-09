@@ -8,3 +8,14 @@
   margin: 0 auto;
   padding: 0 var(--gap-s);
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 var(--gap-l);
+  }
+}
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 var(--gap-s);
+  }
+}

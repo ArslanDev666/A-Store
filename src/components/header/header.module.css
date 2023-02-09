@@ -61,7 +61,17 @@
   background: var(--color-black);
 }
 
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 var(--gap-l);
+  }
+}
+
 @media screen and (max-width: 480px) {
+  .header {
+    padding: 0 var(--gap-s);
+  }
+
   .sidebar {
     --drawer-width: 100%;
   }

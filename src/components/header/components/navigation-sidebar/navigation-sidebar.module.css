@@ -8,6 +8,8 @@
   position: absolute;
   top: var(--gap-s);
   right: var(--gap-s);
+
+  --icon-button-s-size: auto;
 }
 
 .navigationWrapper {
@@ -43,4 +45,19 @@
 .navigationSocialLink {
   --icon-button-s-size: auto;
   border-radius: 50%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .navigationClose {
+    top: var(--gap-m);
+    right: var(--gap-l);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navigationClose {
+    top: var(--gap-m);
+    right: var(--gap-s);
+  }
 }
