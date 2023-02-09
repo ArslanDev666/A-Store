@@ -26,7 +26,7 @@ const SectionTitle = ({
   title,
 }: PropsType) => {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-test-id='section-title'>
       <Typography.TitleResponsive
         view='large'
         tag='h2'

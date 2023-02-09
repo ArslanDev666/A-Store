@@ -16,6 +16,7 @@ const Title = ({ children }: PropsType) => {
       view='medium'
       tag='div'
       font='styrene'
+      dataTestId='title'
     >
       {children}
     </Typography.TitleResponsive>

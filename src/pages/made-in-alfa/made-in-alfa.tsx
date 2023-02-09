@@ -18,7 +18,7 @@ const DESCRIPTION_PAGE = 'Хотим каждую из этих вещей! Се
 
 const MadeInAlfaPage = () => {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-test-id='made-in-alfa-page'>
       <Typography.Title tag='h1' hidden>
         {TITLE_PAGE}
       </Typography.Title>

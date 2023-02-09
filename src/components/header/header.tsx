@@ -27,7 +27,7 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-test-id='header'>
       <Link to={ROUTES.homePage} className={styles.logo}>
         A-Store
       </Link>

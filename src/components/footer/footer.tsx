@@ -10,7 +10,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-test-id='footer'>
       <Container>
         <Typography.Text weight='medium'>
           © ООО «Альфа Фьюче Пипл», {CURRENT_YEAR}

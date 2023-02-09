@@ -36,7 +36,11 @@ const SIZE_IMAGE = 370;
 
 const Product = memo(({ description, image, title, price, id }: PropsType) => {
   return (
-    <Link to={`/products/${id}`} className={styles.product}>
+    <Link
+      to={`/products/${id}`}
+      className={styles.product}
+      data-test-id='product'
+    >
       <div className={styles.productImage}>
         <img src={image} alt={title} width={SIZE_IMAGE} height={SIZE_IMAGE} />
       </div>
@@ -57,7 +61,6 @@ const Product = memo(({ description, image, title, price, id }: PropsType) => {
             defaultMargins={false}
           >
             {description}
-            Выберите один из восьми стикеров
           </Typography.Text>
           <Gap size='s' />
         </>

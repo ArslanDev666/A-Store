@@ -14,7 +14,7 @@ type PropsType = {
 };
 
 const AppLayout = ({ hasFooter = true }: PropsType) => (
-  <div className={styles.layout}>
+  <div className={styles.layout} data-test-id='app-layout'>
     <Header />
     <div className={styles.content}>
       <Outlet />

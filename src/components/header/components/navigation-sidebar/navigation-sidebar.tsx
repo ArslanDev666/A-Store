@@ -17,7 +17,7 @@ import { ROUTES } from 'routes/constants';
 
 import styles from './navigation-sidebar.module.css';
 
-const NAVIGATION_LINKS = [
+export const NAVIGATION_LINKS = [
   {
     text: 'Сделано в Альфе',
     href: ROUTES.madeInAlfa,
@@ -32,22 +32,25 @@ const NAVIGATION_LINKS = [
   },
 ];
 
-const SOCIALS_LINKS = [
+export const SOCIALS_LINKS = [
   {
     icon: MailMIcon,
     href: 'info@alfabankstore.ru',
+    text: 'Ссылка на почту',
   },
   {
     icon: PhoneMIcon,
     href: 'tel:+7 906 061-60-20',
+    text: 'Ссылка на телефон',
   },
   {
     icon: WhatsappMIcon,
     href: 'https://wa.me/79060616020',
+    text: 'Ссылка на whatsApp',
   },
 ];
 
-const PRIVACY_POLICY_LINK = 'https://store.alfabank.ru/policy';
+export const PRIVACY_POLICY_LINK = 'https://store.alfabank.ru/policy';
 
 const NavigationSidebar = () => {
   const { contentRef, onClose } = React.useContext(DrawerContext);
@@ -56,12 +59,14 @@ const NavigationSidebar = () => {
     <div
       ref={contentRef as React.Ref<HTMLDivElement>}
       className={styles.navigation}
+      data-test-id='navigation-sidebar'
     >
       <IconButton
         view='tertiary'
         icon={CloseLIcon}
         className={styles.navigationClose}
         onClick={onClose}
+        dataTestId='navigation-sidebar-close'
       />
 
       <div className={styles.navigationWrapper}>
@@ -104,6 +109,7 @@ const NavigationSidebar = () => {
                 view='tertiary'
                 icon={link.icon}
                 href={link.href}
+                title={link.text}
                 target='_blank'
               />
             </li>

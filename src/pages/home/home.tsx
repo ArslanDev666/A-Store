@@ -13,7 +13,7 @@ import { Card } from './components';
 
 const HomePage = () => {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-test-id='home-page'>
       <Typography.Title tag='h1' hidden>
         A-Store
       </Typography.Title>

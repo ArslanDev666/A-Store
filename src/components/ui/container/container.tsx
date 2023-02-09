@@ -10,7 +10,11 @@ type PropsType = {
 };
 
 const Container = ({ children }: PropsType) => {
-  return <div className={styles.container}>{children}</div>;
+  return (
+    <div className={styles.container} data-test-id='container'>
+      {children}
+    </div>
+  );
 };
 
 export { Container };

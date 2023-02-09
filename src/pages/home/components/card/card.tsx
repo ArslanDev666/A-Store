@@ -23,7 +23,7 @@ type PropsType = {
 
 const Card = ({ image, title, to }: PropsType) => {
   return (
-    <Link className={styles.card} to={to}>
+    <Link className={styles.card} to={to} data-test-id='card'>
       <img src={image} alt={title} className={styles.cardImage} />
       <div className={styles.cardContent}>
         <Typography.TitleResponsive
