@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { HomePage } from 'pages/home';
 import { MadeInAlfaPage } from 'pages/made-in-alfa';
+import { OwnDesignPage } from 'pages/own-design';
 
 import { AppLayout } from 'components/app-layout';
 
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.ownDesign,
-        element: <div>Мой дизайн</div>,
+        element: <OwnDesignPage />,
       },
       {
         path: ROUTES.contact,

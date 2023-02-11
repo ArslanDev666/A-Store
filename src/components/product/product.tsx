@@ -5,7 +5,7 @@ import { Amount } from '@alfalab/core-components/amount';
 import { Gap } from '@alfalab/core-components/gap';
 import { Typography } from '@alfalab/core-components/typography';
 
-import { ProductType } from 'types/product';
+import { SimpleProductType } from 'types/product';
 
 import styles from './product.module.css';
 
@@ -13,15 +13,15 @@ type PropsType = {
   /**
    * id продукта, используется для генерации url
    */
-  id: ProductType['id'];
+  id: SimpleProductType['id'];
   /**
    * Превью товара
    */
-  image: ProductType['preview'];
+  image: SimpleProductType['preview'];
   /**
    * Название товара
    */
-  title: ProductType['title'];
+  title: SimpleProductType['title'];
   /**
    * Описание товара, опционально
    */
@@ -29,7 +29,7 @@ type PropsType = {
   /**
    * Цена товара
    */
-  price: ProductType['price'];
+  price: SimpleProductType['price'];
 };
 
 const SIZE_IMAGE = 370;

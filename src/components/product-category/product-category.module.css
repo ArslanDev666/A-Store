@@ -1,0 +1,19 @@
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 370px);
+  gap: var(--gap-4xl) var(--gap-xl);
+}
+
+@media screen and (max-width: 1200px) {
+  .products {
+    grid-template-columns: repeat(auto-fit, 300px);
+
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .products {
+    grid-template-columns: repeat(auto-fit, 1fr);
+  }
+}
