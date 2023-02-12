@@ -16,6 +16,10 @@ type PropsType = {
    */
   title: CategoryType['title'];
   /**
+   * Id категории
+   */
+  id: CategoryType['id'];
+  /**
    * Описание категории
    */
   description: CategoryType['description'];
@@ -25,7 +29,7 @@ type PropsType = {
   products: CategoryType['products'];
 };
 
-const ProductCategory = ({ description, products, title }: PropsType) => {
+const ProductCategory = ({ description, products, title, id }: PropsType) => {
   return (
     <section data-test-id='product-category'>
       <SectionTitle
@@ -44,6 +48,7 @@ const ProductCategory = ({ description, products, title }: PropsType) => {
             price={product.price}
             description={product.subtitle}
             id={product.id}
+            categoryId={id}
             key={product.id}
           />
         ))}

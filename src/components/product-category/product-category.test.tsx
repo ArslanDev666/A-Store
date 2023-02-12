@@ -5,6 +5,7 @@ import { ProductCategory } from './product-category';
 
 const TEST_TITLE = 'Съешь ещё этих мягких французских булок, да выпей чаю';
 const TEST_DESCRIPTION = 'Lorem, ipsum.';
+const TEST_ID = 1;
 const MOCK_PRODUCTS = [
   {
     id: 5,
@@ -84,6 +85,7 @@ describe('ProductCategory component', () => {
     it('should render correctly', () => {
       render(
         <ProductCategory
+          id={TEST_ID}
           title={TEST_TITLE}
           description={TEST_DESCRIPTION}
           products={MOCK_PRODUCTS}
@@ -99,6 +101,7 @@ describe('ProductCategory component', () => {
     it('should render title correctly', () => {
       render(
         <ProductCategory
+          id={TEST_ID}
           title={TEST_TITLE}
           description={TEST_DESCRIPTION}
           products={MOCK_PRODUCTS}
@@ -112,6 +115,7 @@ describe('ProductCategory component', () => {
     it('should render description correctly', () => {
       render(
         <ProductCategory
+          id={TEST_ID}
           title={TEST_TITLE}
           description={TEST_DESCRIPTION}
           products={MOCK_PRODUCTS}
@@ -125,6 +129,7 @@ describe('ProductCategory component', () => {
     it('should render list product correctly', () => {
       render(
         <ProductCategory
+          id={TEST_ID}
           title={TEST_TITLE}
           description={TEST_DESCRIPTION}
           products={MOCK_PRODUCTS}

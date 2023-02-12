@@ -1,6 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
+import { getProductUrl } from 'utils/product-url';
+
 import testImageUrl from 'assets/images/home-page/banner-made-in-alfa.jpeg';
 
 import { Product } from './product';
@@ -9,7 +11,7 @@ const TEST_TITLE = 'Съешь ещё этих мягких французски
 const TEST_DESCRIPTION = 'Lorem, ipsum.';
 const TEST_PRICE = 100;
 const TEST_ID = 1;
-const TEST_LINK = `/products/${TEST_ID}`;
+const TEST_LINK = getProductUrl(TEST_ID);
 
 describe('Product component', () => {
   describe('Render tests', () => {

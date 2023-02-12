@@ -34,6 +34,7 @@ const OwnDesignPage = () => {
               title={category.title}
               description={category.description}
               products={category.products}
+              id={category.id}
               key={category.id}
             />
           ))}

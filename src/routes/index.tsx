@@ -2,12 +2,13 @@ import { createBrowserRouter } from 'react-router-dom';
 import { HomePage } from 'pages/home';
 import { MadeInAlfaPage } from 'pages/made-in-alfa';
 import { OwnDesignPage } from 'pages/own-design';
+import { ProductPage } from 'pages/product';
 
 import { AppLayout } from 'components/app-layout';
 
 import { ROUTES } from './constants';
 
-export const router = createBrowserRouter([
+export const routerConfig = [
   {
     element: <AppLayout hasFooter={false} />,
     children: [
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
         element: <OwnDesignPage />,
       },
       {
+        path: ROUTES.product,
+        element: <ProductPage />,
+      },
+      {
         path: ROUTES.contact,
         element: <div>Контакты</div>,
       },
@@ -38,4 +43,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+export const router = createBrowserRouter(routerConfig);
