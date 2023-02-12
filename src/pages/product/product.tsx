@@ -6,7 +6,7 @@ import { Typography } from '@alfalab/core-components/typography';
 
 import { Container } from 'components/ui/container';
 
-import { getProduct } from 'utils/get-product';
+import { getProduct, getProductWithCategory } from 'utils/get-product';
 
 import styles from './product.module.css';
 
@@ -28,7 +28,11 @@ const ProductPage = () => {
   const [selectPreview, setSelectPreview] = useState(0);
 
   const product = useMemo(() => {
-    return getProduct(categoryId, productId);
+    if (!categoryId) {
+      return getProduct(productId);
+    }
+    
+    return getProductWithCategory(categoryId, productId);
   }, [categoryId, productId]);
 
   if (!product) return null;

@@ -1,6 +1,7 @@
 export const ROUTES = {
   homePage: '/',
-  product: '/categories/:categoryId/products/:productId',
+  productWithCategory: '/categories/:categoryId/products/:productId',
+  product: '/products/:productId',
   madeInAlfa: '/sdelano-v-alfe',
   ownDesign: '/svoy-dizain',
   contact: '/contact',

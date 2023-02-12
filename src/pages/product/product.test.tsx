@@ -1,61 +1,102 @@
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
-import { getProduct } from 'utils/get-product';
+import { getProductWithCategory } from 'utils/get-product';
 
 import { routerConfig } from 'routes';
 
 import { ProductPage } from './product';
 
+describe('Render tests', () => {
+  it.skip('should render correctly', () => {
+    render(<ProductPage />);
+
+    expect(screen.getByTestId('product-page')).toBeInTheDocument();
+  });
+});
+
 describe('Product page', () => {
-  describe('Render tests', () => {
-    it.skip('should render correctly', () => {
-      render(<ProductPage />);
+  it('should find product by url', () => {
+    const testProductId = '0';
+    const testProductTitle = 'Рюкзак «Для умных и свободных»';
 
-      expect(screen.getByTestId('product-page')).toBeInTheDocument();
+    const testUrl = `/products/${testProductId}`;
+
+    const router = createMemoryRouter(routerConfig, {
+      initialEntries: [testUrl],
     });
 
-    it('should find product by url', () => {
-      const testCategoryId = '0';
-      const testProductId = '5';
+    render(<RouterProvider router={router} />);
 
-      const testUrl = `/categories/${testCategoryId}/products/${testProductId}`;
-
-      const router = createMemoryRouter(routerConfig, {
-        initialEntries: [testUrl],
-      });
-
-      render(<RouterProvider router={router} />);
-
-      const findProduct = getProduct(testCategoryId, testProductId);
-
-      const element = screen.getByRole('heading', {
-        level: 1,
-        hidden: true,
-      });
-
-      expect(element).toBeInTheDocument();
-      expect(element).toHaveTextContent(findProduct!.title);
+    const element = screen.getByRole('heading', {
+      level: 1,
+      hidden: true,
     });
 
-    it('should not found product by url', () => {
-      const testCategoryId = 'a';
-      const testProductId = 'a';
+    expect(element).toBeInTheDocument();
+    expect(element).toHaveTextContent(testProductTitle);
+  });
 
-      const testUrl = `/categories/${testCategoryId}/products/${testProductId}`;
+  it('should not found product by url', () => {
+    const testProductId = '-';
 
-      const router = createMemoryRouter(routerConfig, {
-        initialEntries: [testUrl],
-      });
+    const testUrl = `/products/${testProductId}`;
 
-      render(<RouterProvider router={router} />);
-
-      const element = screen.queryByRole('heading', {
-        level: 1,
-        hidden: true,
-      });
-
-      expect(element).toBeNull();
+    const router = createMemoryRouter(routerConfig, {
+      initialEntries: [testUrl],
     });
+
+    render(<RouterProvider router={router} />);
+
+    const element = screen.queryByRole('heading', {
+      level: 1,
+      hidden: true,
+    });
+
+    expect(element).toBeNull();
+  });
+});
+
+describe('Product page with categories', () => {
+  it('should find product by url', () => {
+    const testCategoryId = '0';
+    const testProductId = '5';
+    const testProductTitle = 'Худи с бархатными стикерами';
+
+    const testUrl = `/categories/${testCategoryId}/products/${testProductId}`;
+
+    const router = createMemoryRouter(routerConfig, {
+      initialEntries: [testUrl],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    const element = screen.getByRole('heading', {
+      level: 1,
+      hidden: true,
+    });
+
+    expect(element).toBeInTheDocument();
+    expect(element).toHaveTextContent(testProductTitle);
+  });
+
+  it('should not found product by url', () => {
+    const testCategoryId = '-';
+    const testProductId = '-';
+
+    const testUrl = `/categories/${testCategoryId}/products/${testProductId}`;
+
+    const router = createMemoryRouter(routerConfig, {
+      initialEntries: [testUrl],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    const element = screen.queryByRole('heading', {
+      level: 1,
+      hidden: true,
+    });
+
+    expect(element).toBeNull();
   });
 });
