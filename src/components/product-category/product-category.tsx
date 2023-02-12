@@ -5,7 +5,7 @@ import { Gap } from '@alfalab/core-components/gap';
 import { Product } from 'components/product/product';
 import { SectionTitle } from 'components/ui/section-title';
 
-import { ProductType } from 'types/product';
+import { CustomProductType } from 'types/product';
 import { CategoryType } from 'types/product-category';
 
 import styles from './product-category.module.css';
@@ -41,12 +41,12 @@ const ProductCategory = ({ description, products, title, id }: PropsType) => {
       <Gap size='6xl' />
 
       <ul className={styles.products}>
-        {products.map((product: ProductType) => (
+        {products.map((product: CustomProductType) => (
           <Product
             image={product.preview}
             title={product.title}
             price={product.price}
-            description={product.subtitle}
+            subtitle={product.subtitle}
             id={product.id}
             categoryId={id}
             key={product.id}

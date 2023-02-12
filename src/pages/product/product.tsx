@@ -31,7 +31,7 @@ const ProductPage = () => {
     if (!categoryId) {
       return getProduct(productId);
     }
-    
+
     return getProductWithCategory(categoryId, productId);
   }, [categoryId, productId]);
 

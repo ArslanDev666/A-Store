@@ -109,7 +109,7 @@ describe('Product component', () => {
           id={TEST_ID}
           image={testImageUrl}
           price={TEST_PRICE}
-          description={TEST_DESCRIPTION}
+          subtitle={TEST_DESCRIPTION}
         />,
         { wrapper: BrowserRouter }
       );

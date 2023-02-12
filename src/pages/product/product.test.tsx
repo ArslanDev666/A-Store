@@ -1,8 +1,6 @@
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
-import { getProductWithCategory } from 'utils/get-product';
-
 import { routerConfig } from 'routes';
 
 import { ProductPage } from './product';

@@ -7,7 +7,7 @@ import { Typography } from '@alfalab/core-components/typography';
 
 import { getProductUrl } from 'utils/product-url';
 
-import { SimpleProductType } from 'types/product';
+import { CustomProductType, ProductType } from 'types/product';
 import { CategoryType } from 'types/product-category';
 
 import styles from './product.module.css';
@@ -16,7 +16,7 @@ type PropsType = {
   /**
    * id продукта, используется для генерации url
    */
-  id: SimpleProductType['id'];
+  id: ProductType['id'];
   /**
    * id категории продукта, используется для генерации url
    */
@@ -24,25 +24,25 @@ type PropsType = {
   /**
    * Превью товара
    */
-  image: SimpleProductType['preview'];
+  image: ProductType['preview'];
   /**
    * Название товара
    */
-  title: SimpleProductType['title'];
+  title: ProductType['title'];
   /**
    * Описание товара, опционально
    */
-  description?: string;
+  subtitle?: CustomProductType['subtitle'];
   /**
    * Цена товара
    */
-  price: SimpleProductType['price'];
+  price: ProductType['price'];
 };
 
 const SIZE_IMAGE = 370;
 
 const Product = memo(
-  ({ description, image, title, price, id, categoryId }: PropsType) => {
+  ({ subtitle, image, title, price, id, categoryId }: PropsType) => {
     return (
       <Link
         to={getProductUrl(id, categoryId)}
@@ -59,7 +59,7 @@ const Product = memo(
         </Typography.TitleResponsive>
         <Gap size='s' />
 
-        {description && (
+        {subtitle && (
           <>
             <Typography.Text
               view='secondary-medium'
@@ -68,7 +68,7 @@ const Product = memo(
               weight='medium'
               defaultMargins={false}
             >
-              {description}
+              {subtitle}
             </Typography.Text>
             <Gap size='s' />
           </>

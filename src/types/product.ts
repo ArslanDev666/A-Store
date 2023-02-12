@@ -16,10 +16,6 @@ export type ProductType = {
    */
   title: string;
   /**
-   * Дополнительное название товара
-   */
-  subtitle: string;
-  /**
    * Цена товара
    */
   price: number;
@@ -30,59 +26,29 @@ export type ProductType = {
   /**
    * Доступные цвета товара
    */
-  colors: string[];
+  colors?: string[];
   /**
    * Доступные размеры товара
    */
-  sizes: string[];
+  sizes?: string[];
   /**
-   * Доступные номера стикеров
+   * Доступные модели телефонов (для чехлов)
    */
-  stickerNumbers: number[];
+  models?: string[];
   /**
    * Наличие товара
    */
   availability: boolean;
 };
 
-export type SimpleProductType = Pick<
-  ProductType,
-  'id' | 'preview' | 'title' | 'price' | 'availability'
->;
+export type CustomProductType = Omit<ProductType, 'models'> & {
+  /**
+   * Дополнительное название товара
+   */
+  subtitle: string;
 
-
-
-declare module namespace {
-  export interface Product {
-    id: number;
-    preview: string;
-    images: string[];
-    title: string;
-    description: string;
-    price: number;
-    availability: boolean;
-    sizes: string[];
-    colors: string[];
-    models: string[];
-  }
-
-  export interface CustomProduct {
-    id: number;
-    preview: string;
-    images: string[];
-    title: string;
-    subtitle: string;
-    description: string;
-    price: number;
-    availability: boolean;
-    sizes: string[];
-    colors: string[];
-    stickerNumbers: number[];
-  }
-
-  export interface RootObject {
-    products: Product[];
-    customProducts: CustomProduct[];
-  }
-}
-
+  /**
+   * Доступные номера стикеров
+   */
+  stickerNumbers: number[];
+};

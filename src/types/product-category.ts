@@ -1,4 +1,4 @@
-import { ProductType } from './product';
+import { CustomProductType } from './product';
 
 export type CategoryType = {
   /**
@@ -16,7 +16,7 @@ export type CategoryType = {
   /**
    * Товары категории
    */
-  products: ProductType[];
+  products: CustomProductType[];
 };
 
 export type ProductCategoryDataType = {

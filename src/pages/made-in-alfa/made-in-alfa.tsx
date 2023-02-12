@@ -9,7 +9,7 @@ import { SectionTitle } from 'components/ui/section-title';
 
 import data from 'utils/data.json';
 
-import { SimpleProductType } from 'types/product';
+import { ProductType } from 'types/product';
 
 import styles from './made-in-alfa.module.css';
 
@@ -28,7 +28,7 @@ const MadeInAlfaPage = () => {
         <Gap size='6xl' />
 
         <ul className={styles.products}>
-          {data.map((product: SimpleProductType) => (
+          {data.map((product: ProductType) => (
             <li key={product.id}>
               <Product
                 image={product.preview}
