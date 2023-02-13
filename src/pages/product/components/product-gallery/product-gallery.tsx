@@ -34,6 +34,8 @@ const ProductGallery = ({
   className,
 }: PropsType) => {
   const handleImageClick = (index: number) => {
+    if (index >= images.length) return;
+
     handleChangePreview(index);
   };
 

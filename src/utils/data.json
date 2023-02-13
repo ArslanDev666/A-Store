@@ -17,7 +17,7 @@
     "id": 1,
     "preview": "http://qa-games.ru/astore/public/images/68519498.jpeg",
     "images": [
-      "http://qa-games.ru/astore/public/images/68519498.jpeg",
+      "https://thumb.tildacdn.com/stor3235-6562-4430-a362-643062633265/-/cover/560x745/center/center/-/format/webp/40113449.jpg",
       "http://qa-games.ru/astore/public/images/56653281.jpeg",
       "http://qa-games.ru/astore/public/images/22582542.jpeg"
     ],
@@ -77,7 +77,7 @@
     "title": "Экоручка",
     "description": "Мы сделали ручки из переработанной офисной бумаги. У нас всё идёт в дело.",
     "price": 99,
-    "colors": ["red", "black"],
+    "colors": ["black", "red"],
     "availability": true
   }
 ]

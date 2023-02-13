@@ -1,5 +1,5 @@
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { routerConfig } from 'routes';
 
@@ -13,7 +13,7 @@ describe('Render tests', () => {
   });
 });
 
-describe('Product page', () => {
+describe('Product page with product tests', () => {
   it('should find product by url', () => {
     const testProductId = '0';
     const testProductTitle = 'Рюкзак «Для умных и свободных»';
@@ -55,7 +55,7 @@ describe('Product page', () => {
   });
 });
 
-describe('Product page with categories', () => {
+describe('Product page with custom product tests', () => {
   it('should find product by url', () => {
     const testCategoryId = '0';
     const testProductId = '5';
@@ -96,5 +96,158 @@ describe('Product page with categories', () => {
     });
 
     expect(element).toBeNull();
+  });
+});
+
+describe('Functions tests', () => {
+  const DOWN_ARROW_KEY = { keyCode: 40 };
+  const ENTER_KEY = { keyCode: 13 };
+
+  const routerWithParams = createMemoryRouter(routerConfig, {
+    initialEntries: [`/categories/0/products/5`],
+  });
+
+  it('onChange select, if the same element is selected', async () => {
+    render(<RouterProvider router={routerWithParams} />);
+
+    expect(screen.getByText('XS')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId('product-select-size'));
+
+    fireEvent.keyDown(
+      screen.getByTestId('product-select-size'),
+      DOWN_ARROW_KEY
+    );
+    fireEvent.keyDown(
+      screen.getByTestId('product-select-size'),
+      DOWN_ARROW_KEY
+    );
+    fireEvent.keyDown(screen.getByTestId('product-select-size'), ENTER_KEY);
+
+    expect(screen.getByText('S')).toBeInTheDocument();
+    expect(screen.queryByText('XS')).toBeNull();
+  });
+
+  it('onChange select, if the selected item is selected', async () => {
+    render(<RouterProvider router={routerWithParams} />);
+
+    expect(screen.getByText('XS')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId('product-select-size'));
+
+    fireEvent.keyDown(
+      screen.getByTestId('product-select-size'),
+      DOWN_ARROW_KEY
+    );
+    fireEvent.keyDown(screen.getByTestId('product-select-size'), ENTER_KEY);
+
+    expect(screen.getByText('XS')).toBeInTheDocument();
+  });
+
+  it('onChange select color', () => {
+    const testImageUrl =
+      'https://thumb.tildacdn.com/stor3866-6439-4632-b936-343331383463/-/cover/560x745/center/center/-/format/webp/89792319.png';
+    const testUpdateImageUrl =
+      'http://qa-games.ru/astore/public/images/25133982.png';
+
+    render(<RouterProvider router={routerWithParams} />);
+
+    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
+      'src',
+      testImageUrl
+    );
+
+    fireEvent.click(screen.getByTestId('product-select-color'));
+
+    fireEvent.keyDown(
+      screen.getByTestId('product-select-color'),
+      DOWN_ARROW_KEY
+    );
+    fireEvent.keyDown(
+      screen.getByTestId('product-select-color'),
+      DOWN_ARROW_KEY
+    );
+    fireEvent.keyDown(screen.getByTestId('product-select-color'), ENTER_KEY);
+
+    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
+      'src',
+      testUpdateImageUrl
+    );
+  });
+
+  it('onChange select color, if the selected item is selected', () => {
+    const testImageUrl =
+      'https://thumb.tildacdn.com/stor3866-6439-4632-b936-343331383463/-/cover/560x745/center/center/-/format/webp/89792319.png';
+
+    render(<RouterProvider router={routerWithParams} />);
+
+    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
+      'src',
+      testImageUrl
+    );
+
+    fireEvent.click(screen.getByTestId('product-select-color'));
+    fireEvent.keyDown(
+      screen.getByTestId('product-select-color'),
+      DOWN_ARROW_KEY
+    );
+    fireEvent.keyDown(screen.getByTestId('product-select-color'), ENTER_KEY);
+
+    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
+      'src',
+      testImageUrl
+    );
+  });
+
+  it('Show select models', async () => {
+    const router = createMemoryRouter(routerConfig, {
+      initialEntries: ['/products/3'],
+    });
+    render(<RouterProvider router={router} />);
+    expect(screen.getByTestId('product-select-model')).toBeInTheDocument();
+  });
+
+  it('Alert on submit click', async () => {
+    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
+    render(<RouterProvider router={routerWithParams} />);
+    fireEvent.click(screen.getByText('В корзину'));
+    expect(alertMock).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Select params render tests', () => {
+  const testCases = [
+    {
+      path: '/categories/0/products/5',
+      result: true,
+    },
+    {
+      path: '/categories/0/products/7',
+      result: true,
+    },
+    {
+      path: '/products/3',
+      result: true,
+    },
+    {
+      path: '/products/0',
+      result: false,
+    },
+  ];
+
+  testCases.forEach(function (testItem) {
+    const router = createMemoryRouter(routerConfig, {
+      initialEntries: [testItem.path],
+    });
+
+    const { unmount } = render(<RouterProvider router={router} />);
+
+    if (testItem.result) {
+      expect(screen.getByTestId('product-params')).toBeInTheDocument();
+    } else {
+      expect(screen.queryByTestId('product-params')).toBeNull();
+    }
+
+    unmount();
   });
 });

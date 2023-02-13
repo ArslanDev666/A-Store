@@ -1,3 +1,41 @@
 .gallery {
-    max-width: 560px;
+  flex-basis: 50%;
+
+  width: 100%;
+  max-width: 560px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.content {
+  --button-s-size-border-radius: 30px;
+  --button-font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  flex-basis: 50%;
+  flex-direction: column;
+}
+
+.description {
+  max-width: 460px;
+
+  white-space: break-spaces;
+}
+
+.form {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  width: 100%;
+    margin-top: var(--gap-l);
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    flex-direction: column;
+  }
 }

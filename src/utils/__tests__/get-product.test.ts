@@ -1,10 +1,10 @@
-import { getProduct, getProductWithCategory } from 'utils/get-product';
+import { getCustomProduct,getProduct } from 'utils/get-product';
 
 describe('Testing getProductWithCategory function', () => {
   it('Get product by categoryId 0 and ProductId 5', () => {
     const testProductTitle = 'Худи с бархатными стикерами';
 
-    const product = getProductWithCategory('0', '5');
+    const product = getCustomProduct('0', '5');
 
     expect(product?.title).toBe(testProductTitle);
   });
@@ -12,19 +12,19 @@ describe('Testing getProductWithCategory function', () => {
   it('Get product by categoryId 2 and ProductId 11', () => {
     const testProductTitle = 'Худи с 3D-стикерами';
 
-    const product = getProductWithCategory('2', '11');
+    const product = getCustomProduct('2', '11');
 
     expect(product?.title).toBe(testProductTitle);
   });
 
   it('Failed get product with null categoryId', () => {
-    const product = getProductWithCategory('', '11');
+    const product = getCustomProduct('', '11');
 
     expect(product).toBeNull();
   });
 
   it('Failed get product with null productId', () => {
-    const product = getProductWithCategory('2', '');
+    const product = getCustomProduct('2', '');
 
     expect(product).toBeNull();
   });
