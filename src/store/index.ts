@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
+import { madeInAlfaReducer } from './made-in-alfa';
 import { notificationsReducer } from './notifications';
 import { ownDesignReducer } from './own-design';
 import { productReducer } from './product';
@@ -17,6 +18,7 @@ const middlewares = [sagaMiddleware];
 const rootReducer = combineReducers({
   notifications: notificationsReducer,
   ownDesign: ownDesignReducer,
+  madeInAlfa: madeInAlfaReducer,
   product: productReducer,
 });
 
