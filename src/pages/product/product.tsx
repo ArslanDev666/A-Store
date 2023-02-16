@@ -89,6 +89,10 @@ const ProductPage = () => {
 
   useEffect(() => {
     dispatch(productActions.request({ id: productId }));
+
+    return () => {
+      dispatch(productActions.reset());
+    };
   }, [dispatch, productId]);
 
   const handleSelectChange: SelectResponsiveProps['onChange'] = ({

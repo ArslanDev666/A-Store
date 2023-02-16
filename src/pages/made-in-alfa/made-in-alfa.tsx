@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Gap } from '@alfalab/core-components/gap';
 import { Spinner } from '@alfalab/core-components/spinner';
@@ -8,9 +8,8 @@ import { Product } from 'components/product';
 import { Container } from 'components/ui/container';
 import { SectionTitle } from 'components/ui/section-title';
 
-import { useAppDispatch, useAppSelector } from 'store';
+import { useAppSelector } from 'store';
 import {
-  madeInAlfaActions,
   madeInAlfaIsLoadingSelector,
   madeInAlfaSelector,
 } from 'store/made-in-alfa';
@@ -23,16 +22,9 @@ const TITLE_PAGE = 'Сделано в Альфе';
 const DESCRIPTION_PAGE = 'Хотим каждую из этих вещей! Себе, родным и друзьям';
 
 const MadeInAlfaPage = () => {
-  const dispatch = useAppDispatch();
   const products = useAppSelector(madeInAlfaSelector);
   const isLoading = useAppSelector(madeInAlfaIsLoadingSelector);
 
-  useEffect(() => {
-    dispatch(madeInAlfaActions.request());
-
-    // React гарантирует, что dispatch меняться не будет.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <div className={styles.root} data-test-id='made-in-alfa-page'>
       <Typography.Title tag='h1' hidden>

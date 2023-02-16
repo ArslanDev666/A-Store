@@ -42,6 +42,10 @@ const failure: CaseReducer<ProductStateType> = (state) => {
   state.hasError = true;
 };
 
+const reset: CaseReducer<ProductStateType> = (state) => {
+  state.product = null;
+};
+
 export const { reducer: productReducer, actions: productActions } = createSlice(
   {
     name: NAME,
@@ -50,6 +54,7 @@ export const { reducer: productReducer, actions: productActions } = createSlice(
       request,
       success,
       failure,
+      reset,
     },
   }
 );

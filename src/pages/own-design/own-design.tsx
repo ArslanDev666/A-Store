@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Gap } from '@alfalab/core-components/gap';
 import { Spinner } from '@alfalab/core-components/spinner';
@@ -8,9 +8,8 @@ import { ProductCategory } from 'components/product-category';
 import { Container } from 'components/ui/container';
 import { SectionTitle } from 'components/ui/section-title';
 
-import { useAppDispatch, useAppSelector } from 'store';
+import { useAppSelector } from 'store';
 import {
-  ownDesignActions,
   ownDesignIsLoadingSelector,
   ownDesignSelector,
 } from 'store/own-design';
@@ -24,16 +23,8 @@ const DESCRIPTION_PAGE =
   'Выберите вещь, а затем — цвет, размер и стикер. Перенесём стикер на вещь как на фото';
 
 const OwnDesignPage = () => {
-  const dispatch = useAppDispatch();
   const products = useAppSelector(ownDesignSelector);
   const isLoading = useAppSelector(ownDesignIsLoadingSelector);
-
-  useEffect(() => {
-    dispatch(ownDesignActions.request());
-
-    // React гарантирует, что dispatch меняться не будет.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className={styles.root} data-test-id='own-design-page'>
