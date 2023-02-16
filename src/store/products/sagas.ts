@@ -13,9 +13,6 @@ function* getOwnDesignProductsSaga() {
     const categories: CategoryType[] = yield call(getOwnDesignProducts);
 
     yield put(ownDesignProductsActions.success(categories));
-    yield put(
-      notificationsActions.success({ title: 'Продукты успешно загружены' })
-    );
   } catch (e) {
     yield put(ownDesignProductsActions.failure());
     yield put(notificationsActions.error({ title: 'Произошла ошибка' }));

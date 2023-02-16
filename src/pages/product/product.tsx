@@ -1,4 +1,5 @@
-import React, { FormEvent, useMemo, useState } from 'react';
+import React, { FormEvent, useEffect, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'hooks/useForm';
 
@@ -10,11 +11,18 @@ import {
   SelectResponsiveProps,
 } from '@alfalab/core-components/select/responsive';
 import { Space } from '@alfalab/core-components/space';
+import { Spinner } from '@alfalab/core-components/spinner';
 import { Typography } from '@alfalab/core-components/typography';
 
 import { Container } from 'components/ui/container';
 
-import { getCustomProduct, getProduct } from 'utils/get-product';
+import { useAppDispatch } from 'store';
+import {
+  isLoadingSelector,
+  productActions,
+  productSelector,
+} from 'store/product';
+
 import { getProductSelectValues } from 'utils/get-product-select-values';
 
 import { CustomProductType, ProductType } from 'types/product';
@@ -38,64 +46,50 @@ type FormStateType = {
   color: SelectResponsiveProps['selected'];
   size: SelectResponsiveProps['selected'];
   sticker: SelectResponsiveProps['selected'];
-  models: SelectResponsiveProps['selected'];
+  model: SelectResponsiveProps['selected'];
 };
 
 const INITIAL_PREVIEW = 0;
 
+const initialValues: FormStateType = {
+  color: null,
+  size: null,
+  sticker: null,
+  model: null,
+};
+
 const ProductPage = () => {
-  const { productId, categoryId } = useParams<ParamsType>();
+  const dispatch = useAppDispatch();
+  const product = useSelector(productSelector);
+  const isLoading = useSelector(isLoadingSelector);
+
+  const { productId } = useParams<ParamsType>();
   const [selectPreview, setSelectPreview] = useState(INITIAL_PREVIEW);
 
-  const product = useMemo(() => {
-    if (!categoryId) return getProduct(productId);
+  const { colors, models, sizes, stickers, isShowForm } = useMemo(() => {
+    const sizes = getProductSelectValues(product?.sizes);
+    const colors = getProductSelectValues(product?.colors);
+    const stickers = getProductSelectValues(
+      (product as CustomProductType)?.stickerNumbers
+    );
+    const models = getProductSelectValues((product as ProductType)?.models);
 
-    return getCustomProduct(categoryId, productId);
-  }, [categoryId, productId]);
+    const isShowForm = Boolean(sizes || colors || stickers || models);
 
-  const { colors, models, sizes, stickers, isShowForm } = useMemo(
-    () => {
-      const sizes = getProductSelectValues(product?.sizes);
-      const colors = getProductSelectValues(product?.colors);
-      const stickers = getProductSelectValues(
-        (product as CustomProductType)?.stickerNumbers
-      );
-      const models = getProductSelectValues((product as ProductType)?.models);
+    return {
+      sizes,
+      colors,
+      stickers,
+      models,
+      isShowForm,
+    };
+  }, [product]);
 
-      const isShowForm = Boolean(sizes || colors || stickers || models);
+  const { setValues } = useForm<FormStateType>(initialValues);
 
-      return {
-        sizes,
-        colors,
-        stickers,
-        models,
-        isShowForm,
-      };
-    },
-    /**
-     * Продукт изменится, только при смене url.
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-
-  const initialFormState: FormStateType = useMemo(
-    () => ({
-      color: colors[0],
-      size: sizes[0],
-      sticker: stickers[0],
-      models: models[0],
-    }),
-    /**
-     * Поля изменятся, только при смене продукта, а продукт изменится, только при смене url.
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-
-  const { setValues, values } = useForm<FormStateType>(initialFormState);
-
-  if (!product) return null;
+  useEffect(() => {
+    dispatch(productActions.request({ id: productId }));
+  }, [dispatch, productId]);
 
   const handleSelectChange: SelectResponsiveProps['onChange'] = ({
     selected,
@@ -104,14 +98,6 @@ const ProductPage = () => {
     if (!selected || !name) return;
 
     setValues((prevValues) => ({ ...prevValues, [name]: selected }));
-  };
-
-  const handleColorChange: SelectResponsiveProps['onChange'] = (payload) => {
-    if (!payload.selected) return;
-
-    setSelectPreview(+payload.selected.key);
-
-    handleSelectChange(payload);
   };
 
   const handleFormSubmit = (e: FormEvent) => {
@@ -123,119 +109,119 @@ const ProductPage = () => {
   return (
     <div data-test-id='product-page'>
       <Typography.Title tag='h1' hidden>
-        {product.title}
+        {product?.title}
       </Typography.Title>
 
       <Container>
-        <div className={styles.wrapper}>
-          <ProductGallery
-            initialPreview={selectPreview}
-            handleChangePreview={setSelectPreview}
-            images={product.images}
-            title={product.title}
-            className={styles.gallery}
-          />
+        <Spinner visible={isLoading} size='m' />
 
-          <div className={styles.content}>
-            <Typography.TitleResponsive tag='h2' view='xsmall'>
-              {product.title}
-            </Typography.TitleResponsive>
+        {product && (
+          <div className={styles.wrapper}>
+            <ProductGallery
+              initialPreview={selectPreview}
+              handleChangePreview={setSelectPreview}
+              images={product.images}
+              title={product.title}
+              className={styles.gallery}
+            />
 
-            <Gap size='l' />
+            <div className={styles.content}>
+              <Typography.TitleResponsive tag='h2' view='xsmall'>
+                {product.title}
+              </Typography.TitleResponsive>
 
-            <Typography.TitleResponsive view='xsmall' tag='div'>
-              <Amount
-                value={product.price}
-                currency='RUR'
-                minority={1}
-                bold='full'
-              />
-            </Typography.TitleResponsive>
-
-            <form onSubmit={handleFormSubmit} className={styles.form}>
-              {isShowForm && (
-                <Space size='m' fullWidth dataTestId='product-params'>
-                  {sizes?.length ? (
-                    <SelectResponsive
-                      allowUnselect={true}
-                      size='s'
-                      options={sizes}
-                      placeholder='Размер'
-                      label='Размер'
-                      selected={values.size}
-                      onChange={handleSelectChange}
-                      block={true}
-                      name='size'
-                      labelView='outer'
-                      dataTestId='product-select-size'
-                    />
-                  ) : null}
-
-                  {colors?.length ? (
-                    <SelectResponsive
-                      allowUnselect={true}
-                      size='s'
-                      options={colors}
-                      placeholder='Цвет'
-                      label='Цвет'
-                      selected={values.color}
-                      onChange={handleColorChange}
-                      block={true}
-                      name='color'
-                      labelView='outer'
-                      dataTestId='product-select-color'
-                    />
-                  ) : null}
-
-                  {stickers?.length ? (
-                    <SelectResponsive
-                      allowUnselect={true}
-                      size='s'
-                      options={stickers}
-                      placeholder='Номер стикера'
-                      label='Номер стикера'
-                      selected={values.sticker}
-                      onChange={handleSelectChange}
-                      block={true}
-                      name='sticker'
-                      labelView='outer'
-                      dataTestId='product-select-sticker'
-                    />
-                  ) : null}
-
-                  {models?.length ? (
-                    <SelectResponsive
-                      allowUnselect={true}
-                      size='s'
-                      options={models}
-                      placeholder='Модель'
-                      label='Модель'
-                      selected={models[0]}
-                      block={true}
-                      labelView='outer'
-                      dataTestId='product-select-model'
-                    />
-                  ) : null}
-                </Space>
-              )}
               <Gap size='l' />
 
-              <Button size='s' view='primary' type='submit'>
-                В корзину
-              </Button>
-            </form>
+              <Typography.TitleResponsive view='xsmall' tag='div'>
+                <Amount
+                  value={product.price}
+                  currency='RUR'
+                  minority={1}
+                  bold='full'
+                />
+              </Typography.TitleResponsive>
 
-            <Gap size='xl' />
+              <form onSubmit={handleFormSubmit} className={styles.form}>
+                {isShowForm && (
+                  <Space size='m' fullWidth dataTestId='product-params'>
+                    {sizes?.length ? (
+                      <SelectResponsive
+                        allowUnselect={true}
+                        size='s'
+                        options={sizes}
+                        placeholder='Размер'
+                        label='Размер'
+                        onChange={handleSelectChange}
+                        block={true}
+                        name='size'
+                        labelView='outer'
+                        dataTestId='product-select-size'
+                      />
+                    ) : null}
 
-            <Typography.Text
-              view='secondary-medium'
-              weight='medium'
-              className={styles.description}
-            >
-              {product.description}
-            </Typography.Text>
+                    {colors?.length ? (
+                      <SelectResponsive
+                        allowUnselect={true}
+                        size='s'
+                        options={colors}
+                        placeholder='Цвет'
+                        label='Цвет'
+                        onChange={handleSelectChange}
+                        block={true}
+                        name='color'
+                        labelView='outer'
+                        dataTestId='product-select-color'
+                      />
+                    ) : null}
+
+                    {stickers?.length ? (
+                      <SelectResponsive
+                        allowUnselect={true}
+                        size='s'
+                        options={stickers}
+                        placeholder='Номер стикера'
+                        label='Номер стикера'
+                        onChange={handleSelectChange}
+                        block={true}
+                        name='sticker'
+                        labelView='outer'
+                        dataTestId='product-select-sticker'
+                      />
+                    ) : null}
+
+                    {models?.length ? (
+                      <SelectResponsive
+                        allowUnselect={true}
+                        size='s'
+                        options={models}
+                        placeholder='Модель'
+                        label='Модель'
+                        block={true}
+                        labelView='outer'
+                        dataTestId='product-select-model'
+                      />
+                    ) : null}
+                  </Space>
+                )}
+                <Gap size='l' />
+
+                <Button size='s' view='primary' type='submit'>
+                  В корзину
+                </Button>
+              </form>
+
+              <Gap size='xl' />
+
+              <Typography.Text
+                view='secondary-medium'
+                weight='medium'
+                className={styles.description}
+              >
+                {product.description}
+              </Typography.Text>
+            </div>
           </div>
-        </div>
+        )}
       </Container>
       <Gap size='8xl' />
     </div>

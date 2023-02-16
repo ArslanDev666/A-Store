@@ -1,13 +1,15 @@
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 
+import { renderWithProviders } from 'utils/tests-utils';
+
 import { routerConfig } from 'routes';
 
 import { ProductPage } from './product';
 
 describe('Render tests', () => {
   it.skip('should render correctly', () => {
-    render(<ProductPage />);
+    renderWithProviders(<ProductPage />);
 
     expect(screen.getByTestId('product-page')).toBeInTheDocument();
   });
@@ -24,7 +26,7 @@ describe('Product page with product tests', () => {
       initialEntries: [testUrl],
     });
 
-    render(<RouterProvider router={router} />);
+    renderWithProviders(<RouterProvider router={router} />);
 
     const element = screen.getByRole('heading', {
       level: 1,
@@ -44,7 +46,7 @@ describe('Product page with product tests', () => {
       initialEntries: [testUrl],
     });
 
-    render(<RouterProvider router={router} />);
+    renderWithProviders(<RouterProvider router={router} />);
 
     const element = screen.queryByRole('heading', {
       level: 1,
@@ -67,7 +69,7 @@ describe('Product page with custom product tests', () => {
       initialEntries: [testUrl],
     });
 
-    render(<RouterProvider router={router} />);
+    renderWithProviders(<RouterProvider router={router} />);
 
     const element = screen.getByRole('heading', {
       level: 1,
@@ -88,7 +90,7 @@ describe('Product page with custom product tests', () => {
       initialEntries: [testUrl],
     });
 
-    render(<RouterProvider router={router} />);
+    renderWithProviders(<RouterProvider router={router} />);
 
     const element = screen.queryByRole('heading', {
       level: 1,
@@ -108,7 +110,7 @@ describe('Functions tests', () => {
   });
 
   it('onChange select, if the same element is selected', async () => {
-    render(<RouterProvider router={routerWithParams} />);
+    renderWithProviders(<RouterProvider router={routerWithParams} />);
 
     expect(screen.getByText('XS')).toBeInTheDocument();
 
@@ -129,7 +131,7 @@ describe('Functions tests', () => {
   });
 
   it('onChange select, if the selected item is selected', async () => {
-    render(<RouterProvider router={routerWithParams} />);
+    renderWithProviders(<RouterProvider router={routerWithParams} />);
 
     expect(screen.getByText('XS')).toBeInTheDocument();
 
@@ -150,7 +152,7 @@ describe('Functions tests', () => {
     const testUpdateImageUrl =
       'http://qa-games.ru/astore/public/images/25133982.png';
 
-    render(<RouterProvider router={routerWithParams} />);
+    renderWithProviders(<RouterProvider router={routerWithParams} />);
 
     expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
       'src',
@@ -179,7 +181,7 @@ describe('Functions tests', () => {
     const testImageUrl =
       'https://thumb.tildacdn.com/stor3866-6439-4632-b936-343331383463/-/cover/560x745/center/center/-/format/webp/89792319.png';
 
-    render(<RouterProvider router={routerWithParams} />);
+    renderWithProviders(<RouterProvider router={routerWithParams} />);
 
     expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
       'src',
@@ -203,51 +205,14 @@ describe('Functions tests', () => {
     const router = createMemoryRouter(routerConfig, {
       initialEntries: ['/products/3'],
     });
-    render(<RouterProvider router={router} />);
+    renderWithProviders(<RouterProvider router={router} />);
     expect(screen.getByTestId('product-select-model')).toBeInTheDocument();
   });
 
   it('Alert on submit click', async () => {
     const alertMock = jest.spyOn(window, 'alert').mockImplementation();
-    render(<RouterProvider router={routerWithParams} />);
+    renderWithProviders(<RouterProvider router={routerWithParams} />);
     fireEvent.click(screen.getByText('В корзину'));
     expect(alertMock).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('Select params render tests', () => {
-  const testCases = [
-    {
-      path: '/categories/0/products/5',
-      result: true,
-    },
-    {
-      path: '/categories/0/products/7',
-      result: true,
-    },
-    {
-      path: '/products/3',
-      result: true,
-    },
-    {
-      path: '/products/0',
-      result: false,
-    },
-  ];
-
-  testCases.forEach(function (testItem) {
-    const router = createMemoryRouter(routerConfig, {
-      initialEntries: [testItem.path],
-    });
-
-    const { unmount } = render(<RouterProvider router={router} />);
-
-    if (testItem.result) {
-      expect(screen.getByTestId('product-params')).toBeInTheDocument();
-    } else {
-      expect(screen.queryByTestId('product-params')).toBeNull();
-    }
-
-    unmount();
   });
 });

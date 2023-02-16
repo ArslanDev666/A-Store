@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cn from 'classnames';
 
 import styles from './product-gallery.module.css';
@@ -26,54 +26,56 @@ type PropsType = {
   className?: string;
 };
 
-const ProductGallery = ({
-  initialPreview,
-  handleChangePreview,
-  images,
-  title,
-  className,
-}: PropsType) => {
-  const handleImageClick = (index: number) => {
-    if (index >= images.length) return;
+const ProductGallery = memo(
+  ({
+    initialPreview,
+    handleChangePreview,
+    images,
+    title,
+    className,
+  }: PropsType) => {
+    const handleImageClick = (index: number) => {
+      if (index >= images.length) return;
 
-    handleChangePreview(index);
-  };
+      handleChangePreview(index);
+    };
 
-  return (
-    <div
-      data-test-id='product-gallery'
-      className={cn(styles.galleryWrapper, className)}
-    >
-      <div className={styles.galleryPreview}>
-        <img
-          src={images[initialPreview]}
-          alt={title}
-          data-test-id='product-gallery-preview'
-        />
+    return (
+      <div
+        data-test-id='product-gallery'
+        className={cn(styles.galleryWrapper, className)}
+      >
+        <div className={styles.galleryPreview}>
+          <img
+            src={images[initialPreview]}
+            alt={title}
+            data-test-id='product-gallery-preview'
+          />
+        </div>
+
+        <ul className={styles.galleryImages}>
+          {images.map((image, index) => (
+            <li key={image}>
+              <button
+                className={cn(styles.galleryImage, {
+                  [styles.galleryImageActive]: index === initialPreview,
+                })}
+                onClick={() => handleImageClick(index)}
+                role='tab'
+                aria-selected={index === initialPreview}
+              >
+                <img
+                  src={image}
+                  alt={title}
+                  data-test-id='product-gallery-image'
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <ul className={styles.galleryImages}>
-        {images.map((image, index) => (
-          <li key={image}>
-            <button
-              className={cn(styles.galleryImage, {
-                [styles.galleryImageActive]: index === initialPreview,
-              })}
-              onClick={() => handleImageClick(index)}
-              role='tab'
-              aria-selected={index === initialPreview}
-            >
-              <img
-                src={image}
-                alt={title}
-                data-test-id='product-gallery-image'
-              />
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    );
+  }
+);
 
 export { ProductGallery };

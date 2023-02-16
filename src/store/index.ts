@@ -7,6 +7,7 @@ import {
 import createSagaMiddleware from 'redux-saga';
 
 import { notificationsReducer } from './notifications';
+import { productReducer } from './product';
 import { ownDesignProductsReducer } from './products';
 import { rootSaga } from './root-saga';
 
@@ -16,6 +17,7 @@ const middlewares = [sagaMiddleware];
 const rootReducer = combineReducers({
   notifications: notificationsReducer,
   ownDesignProducts: ownDesignProductsReducer,
+  product: productReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
