@@ -15,7 +15,7 @@ import { Typography } from '@alfalab/core-components/typography';
 import { Container } from 'components/ui/container';
 
 import { getCustomProduct, getProduct } from 'utils/get-product';
-import { getProductSelectValues } from 'utils/get-product-select-valuse';
+import { getProductSelectValues } from 'utils/get-product-select-values';
 
 import { CustomProductType, ProductType } from 'types/product';
 

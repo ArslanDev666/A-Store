@@ -1,18 +1,19 @@
-import { BrowserRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+
+import { renderWithProviders } from 'utils/tests-utils';
 
 import { OwnDesignPage } from './own-design';
 
 describe('OwnDesign page', () => {
   describe('Render tests', () => {
     it('should render correctly', () => {
-      render(<OwnDesignPage />, { wrapper: BrowserRouter });
+      renderWithProviders(<OwnDesignPage />);
 
       expect(screen.getByTestId('own-design-page')).toBeInTheDocument();
     });
 
     it('should render title correctly', () => {
-      render(<OwnDesignPage />, { wrapper: BrowserRouter });
+      renderWithProviders(<OwnDesignPage />);
 
       const element = screen.getByRole('heading', { level: 1, hidden: true });
       expect(element).toBeInTheDocument();

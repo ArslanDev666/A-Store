@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Gap } from '@alfalab/core-components/gap';
+import { Spinner } from '@alfalab/core-components/spinner';
 import { Typography } from '@alfalab/core-components/typography';
 
 import { ProductCategory } from 'components/product-category';
 import { Container } from 'components/ui/container';
 import { SectionTitle } from 'components/ui/section-title';
 
-import data from 'utils/category-data.json';
+import { useAppDispatch, useAppSelector } from 'store';
+import {
+  isLoadingSelector,
+  ownDesignProductsActions,
+  ownDesignProductsSelector,
+} from 'store/products';
 
 import { CategoryType } from 'types/product-category';
 
@@ -18,6 +24,17 @@ const DESCRIPTION_PAGE =
   'Выберите вещь, а затем — цвет, размер и стикер. Перенесём стикер на вещь как на фото';
 
 const OwnDesignPage = () => {
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(ownDesignProductsSelector);
+  const isLoading = useAppSelector(isLoadingSelector);
+
+  useEffect(() => {
+    dispatch(ownDesignProductsActions.request());
+
+    // React гарантирует, что dispatch меняться не будет.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.root} data-test-id='own-design-page'>
       <Typography.Title tag='h1' hidden>
@@ -28,30 +45,36 @@ const OwnDesignPage = () => {
         <SectionTitle title={TITLE_PAGE} description={DESCRIPTION_PAGE} />
         <Gap size='6xl' />
 
-        <ul className={styles.categories}>
-          {data.groups.map((category: CategoryType) => (
-            <ProductCategory
-              title={category.title}
-              description={category.description}
-              products={category.products}
-              id={category.id}
-              key={category.id}
-            />
-          ))}
-        </ul>
+        <Spinner visible={isLoading} size='m' />
 
-        <Gap size='8xl' />
-        <div className={styles.footer}>
-          <Typography.TitleResponsive
-            weight='medium'
-            tag='h4'
-            color='tertiary'
-            view='xsmall'
-          >
-            Посмотреть и потрогать все стикеры можно в A-Store на Технопарке. А
-            ещё там можно добавить сразу несколько стикеров на одну вещь.
-          </Typography.TitleResponsive>
-        </div>
+        {!!products.length && (
+          <>
+            <ul className={styles.categories}>
+              {products.map((category: CategoryType) => (
+                <ProductCategory
+                  title={category.title}
+                  description={category.description}
+                  products={category.products}
+                  id={category.id}
+                  key={category.id}
+                />
+              ))}
+            </ul>
+            <Gap size='8xl' />
+            <div className={styles.footer}>
+              <Typography.TitleResponsive
+                weight='medium'
+                tag='h4'
+                color='tertiary'
+                view='xsmall'
+              >
+                Посмотреть и потрогать все стикеры можно в A-Store на
+                Технопарке. А ещё там можно добавить сразу несколько стикеров на
+                одну вещь.
+              </Typography.TitleResponsive>
+            </div>
+          </>
+        )}
       </Container>
     </div>
   );

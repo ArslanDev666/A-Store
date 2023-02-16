@@ -1,4 +1,4 @@
-import { getCustomProduct,getProduct } from 'utils/get-product';
+import { getCustomProduct, getProduct } from 'utils/get-product';
 
 describe('Testing getProductWithCategory function', () => {
   it('Get product by categoryId 0 and ProductId 5', () => {
