@@ -30,7 +30,7 @@ export const routerConfig = [
         element: <OwnDesignPage />,
       },
       {
-        path: ROUTES.customProduct,
+        path: ROUTES.product,
         element: <ProductPage />,
       },
       {

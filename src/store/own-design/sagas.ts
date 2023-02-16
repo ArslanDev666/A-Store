@@ -6,22 +6,19 @@ import { CategoryType } from 'types/product-category';
 
 import { notificationsActions } from '../notifications';
 
-import { ownDesignProductsActions } from './slice';
+import { ownDesignActions } from './slice';
 
-function* getOwnDesignProductsSaga() {
+function* getOwnDesignSaga() {
   try {
     const categories: CategoryType[] = yield call(getOwnDesignProducts);
 
-    yield put(ownDesignProductsActions.success(categories));
+    yield put(ownDesignActions.success(categories));
   } catch (e) {
-    yield put(ownDesignProductsActions.failure());
+    yield put(ownDesignActions.failure());
     yield put(notificationsActions.error({ title: 'Произошла ошибка' }));
   }
 }
 
-export function* watchOwnDesignProductsSaga() {
-  yield takeLatest(
-    ownDesignProductsActions.request.type,
-    getOwnDesignProductsSaga
-  );
+export function* watchOwnDesignSaga() {
+  yield takeLatest(ownDesignActions.request.type, getOwnDesignSaga);
 }

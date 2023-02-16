@@ -10,10 +10,10 @@ import { SectionTitle } from 'components/ui/section-title';
 
 import { useAppDispatch, useAppSelector } from 'store';
 import {
-  isLoadingSelector,
-  ownDesignProductsActions,
-  ownDesignProductsSelector,
-} from 'store/products';
+  ownDesignActions,
+  ownDesignIsLoadingSelector,
+  ownDesignSelector,
+} from 'store/own-design';
 
 import { CategoryType } from 'types/product-category';
 
@@ -25,11 +25,11 @@ const DESCRIPTION_PAGE =
 
 const OwnDesignPage = () => {
   const dispatch = useAppDispatch();
-  const products = useAppSelector(ownDesignProductsSelector);
-  const isLoading = useAppSelector(isLoadingSelector);
+  const products = useAppSelector(ownDesignSelector);
+  const isLoading = useAppSelector(ownDesignIsLoadingSelector);
 
   useEffect(() => {
-    dispatch(ownDesignProductsActions.request());
+    dispatch(ownDesignActions.request());
 
     // React гарантирует, что dispatch меняться не будет.
     // eslint-disable-next-line react-hooks/exhaustive-deps

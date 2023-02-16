@@ -1,7 +1,3 @@
-export const getProductUrl = (productId: number, categoryId?: number) => {
-  if (categoryId?.toString()) {
-    return `/categories/${categoryId}/products/${productId}`;
-  }
-
+export const getProductUrl = (productId: number) => {
   return `/products/${productId}`;
 };

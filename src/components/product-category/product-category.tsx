@@ -48,7 +48,6 @@ const ProductCategory = ({ description, products, title, id }: PropsType) => {
             price={product.price}
             subtitle={product.subtitle}
             id={product.id}
-            categoryId={id}
             key={product.id}
           />
         ))}

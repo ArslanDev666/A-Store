@@ -1,9 +1,9 @@
 import { fork } from 'redux-saga/effects';
 
+import { watchOwnDesignSaga } from './own-design';
 import { watchProductSaga } from './product';
-import { watchOwnDesignProductsSaga } from './products';
 
 export function* rootSaga() {
-  yield fork(watchOwnDesignProductsSaga);
+  yield fork(watchOwnDesignSaga);
   yield fork(watchProductSaga);
 }
