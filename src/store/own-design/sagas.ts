@@ -8,7 +8,7 @@ import { notificationsActions } from '../notifications';
 
 import { ownDesignActions } from './slice';
 
-function* getOwnDesignSaga() {
+export function* getOwnDesignSaga() {
   try {
     const categories: CategoryType[] = yield call(getOwnDesignProducts);
 

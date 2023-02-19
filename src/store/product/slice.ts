@@ -12,7 +12,7 @@ type ProductStateType = {
   hasError: boolean;
 };
 
-const initialState: ProductStateType = {
+export const initialState: ProductStateType = {
   product: null,
   isLoading: false,
   hasError: false,
@@ -20,18 +20,15 @@ const initialState: ProductStateType = {
 
 const NAME = 'product';
 
-const request: CaseReducer<
-  ProductStateType,
-  PayloadAction<getProductPayloadType>
-> = (state) => {
+const request: CaseReducer<ProductStateType, PayloadAction<getProductPayloadType>> = (state) => {
   state.isLoading = true;
   state.hasError = false;
 };
 
-const success: CaseReducer<
-  ProductStateType,
-  PayloadAction<StateProductType>
-> = (state, { payload }) => {
+const success: CaseReducer<ProductStateType, PayloadAction<StateProductType>> = (
+  state,
+  { payload }
+) => {
   state.isLoading = false;
   state.hasError = false;
   state.product = payload;
@@ -46,15 +43,13 @@ const reset: CaseReducer<ProductStateType> = (state) => {
   state.product = null;
 };
 
-export const { reducer: productReducer, actions: productActions } = createSlice(
-  {
-    name: NAME,
-    initialState: initialState,
-    reducers: {
-      request,
-      success,
-      failure,
-      reset,
-    },
-  }
-);
+export const { reducer: productReducer, actions: productActions } = createSlice({
+  name: NAME,
+  initialState: initialState,
+  reducers: {
+    request,
+    success,
+    failure,
+    reset,
+  },
+});

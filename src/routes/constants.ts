@@ -5,4 +5,5 @@ export const ROUTES = {
   ownDesign: '/svoy-dizain',
   contact: '/contact',
   cart: '/cart',
+  notFoundPage: '/not-found-page',
 };

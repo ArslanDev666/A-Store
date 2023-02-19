@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationSidebar component Render tests should render correctly 1`] = `
+<div
+  className="navigation"
+  data-test-id="navigation-sidebar"
+>
+  <button
+    className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button navigationClose icon-button__tertiary_7jncp icon-button__component_7jncp"
+    data-test-id="navigation-sidebar-close"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="button__text_onnkc button__stretchText_onnkc"
+    >
+      <span
+        className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+      >
+        <svg
+          className="icon-button__icon_gy47p"
+          fill="currentColor"
+          focusable="false"
+          height="30"
+          role="img"
+          version="1"
+          viewBox="0 0 30 30"
+          width="30"
+        >
+          <path
+            d="M23.646 5.646L15 14.293 6.354 5.646l-.708.708L14.293 15l-8.647 8.646.708.708L15 15.707l8.646 8.647.708-.708L15.707 15l8.647-8.646z"
+          />
+        </svg>
+      </span>
+    </span>
+  </button>
+  <div
+    className="navigationWrapper"
+  >
+    <nav
+      className="navigationContent"
+    >
+      <ul
+        className="navigationList"
+      >
+        <li>
+          <div
+            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            data-test-id="title"
+          >
+            <a
+              className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+              href="/sdelano-v-alfe"
+              onClick={[Function]}
+            >
+              <span
+                className="link__text_1r33z"
+              >
+                Сделано в Альфе
+              </span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div
+            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            data-test-id="title"
+          >
+            <a
+              className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+              href="/svoy-dizain"
+              onClick={[Function]}
+            >
+              <span
+                className="link__text_1r33z"
+              >
+                Свой дизайн
+              </span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div
+            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            data-test-id="title"
+          >
+            <a
+              className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+              href="/contact"
+              onClick={[Function]}
+            >
+              <span
+                className="link__text_1r33z"
+              >
+                Контакты
+              </span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div
+      className="navigationCopyright"
+    >
+      <span
+        className="typography__primary-small_xcdcz typography__bold_xcdcz"
+      >
+        <a
+          className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+          href="https://store.alfabank.ru/policy"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <span
+            className="link__text_1r33z"
+          >
+            Политика конфиденциальности 
+            <br />
+             и обработки персональных данных
+          </span>
+        </a>
+      </span>
+    </div>
+    <ul
+      className="navigationFooter"
+    >
+      <li
+        className="navigationSocialLink"
+      >
+        <a
+          className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button icon-button__tertiary_7jncp icon-button__component_7jncp"
+          data-test-id={null}
+          disabled={false}
+          href="info@alfabankstore.ru"
+          onClick={[Function]}
+          rel="noreferrer noopener"
+          target="_blank"
+          title="Ссылка на почту"
+        >
+          <span
+            className="button__text_onnkc button__stretchText_onnkc"
+          >
+            <span
+              className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+            >
+              <svg
+                className="icon-button__icon_gy47p"
+                fill="currentColor"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M3 5a1 1 0 00-1 1v1l10 4.5L22 7V6a1 1 0 00-1-1H3zm9 8.5L22 9v9a1 1 0 01-1 1H3a1 1 0 01-1-1V9l10 4.5z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </span>
+          </span>
+        </a>
+      </li>
+      <li
+        className="navigationSocialLink"
+      >
+        <a
+          className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button icon-button__tertiary_7jncp icon-button__component_7jncp"
+          data-test-id={null}
+          disabled={false}
+          href="tel:+7 906 061-60-20"
+          onClick={[Function]}
+          rel="noreferrer noopener"
+          target="_blank"
+          title="Ссылка на телефон"
+        >
+          <span
+            className="button__text_onnkc button__stretchText_onnkc"
+          >
+            <span
+              className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+            >
+              <svg
+                className="icon-button__icon_gy47p"
+                fill="currentColor"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M7.167 2.795a1.015 1.015 0 00-1.542.132L4.406 4.629A4.833 4.833 0 003.5 7.45c.003.808.213 1.621.65 2.358 2.77 4.664 5.411 7.252 10.03 10.028 1.648.99 3.692.84 5.205-.244l1.688-1.21c.51-.367.574-1.102.132-1.543l-2.873-2.875a1.012 1.012 0 00-1.24-.149l-2.383 1.925-6.447-6.446L10.19 6.91c.241-.4.18-.91-.148-1.24L7.167 2.796z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </span>
+          </span>
+        </a>
+      </li>
+      <li
+        className="navigationSocialLink"
+      >
+        <a
+          className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button icon-button__tertiary_7jncp icon-button__component_7jncp"
+          data-test-id={null}
+          disabled={false}
+          href="https://wa.me/79060616020"
+          onClick={[Function]}
+          rel="noreferrer noopener"
+          target="_blank"
+          title="Ссылка на whatsApp"
+        >
+          <span
+            className="button__text_onnkc button__stretchText_onnkc"
+          >
+            <span
+              className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+            >
+              <svg
+                className="icon-button__icon_gy47p"
+                fill="currentColor"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M22 12c0 5.523-4.477 10-10 10a9.954 9.954 0 01-4.94-1.304L2 22l1.359-4.964A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10zm-5.244 2.162l-.594-.27s-.865-.378-1.406-.649c-.108-.053-.235-.098-.377-.053a.367.367 0 00-.163.107s-.054.054-.81.92a.297.297 0 01-.27.161h-.055a.513.513 0 01-.215-.071 20.205 20.205 0 00-.318-.161c-.12-.06-.24-.12-.358-.182a5.402 5.402 0 01-.747-.468 8.036 8.036 0 01-1.08-.983 5.353 5.353 0 01-.741-1l-.054-.107a.284.284 0 01-.064-.113.924.924 0 00-.044-.103c0-.108 0-.216.054-.27 0 0 .216-.27.378-.433a.931.931 0 00.135-.19.946.946 0 01.135-.188c.108-.162.162-.378.108-.54-.054-.271-.703-1.73-.865-2.055-.108-.162-.216-.216-.378-.27h-.594c-.3 0-.56.18-.703.324-.52.52-.865 1.26-.865 2 0 .432.108.865.27 1.243l.055.162a9.014 9.014 0 001.835 2.6c.08.078.16.158.24.239.3.3.603.603.934.862a9.589 9.589 0 003.531 1.759c.162.054.38.087.54.108.162.021.378.013.541 0a2.42 2.42 0 00.811-.216c.256-.128.486-.27.683-.454.145-.136.31-.29.398-.465a2.44 2.44 0 00.18-.579l.008-.038c.052-.242.108-.506-.135-.627z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

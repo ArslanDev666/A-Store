@@ -3,25 +3,28 @@ import { render, screen } from '@testing-library/react';
 
 import { getProductUrl } from 'utils/product-url';
 
-import testImageUrl from 'assets/images/home-page/banner-made-in-alfa.jpeg';
+import imageUrl from 'assets/images/home-page/banner-made-in-alfa.jpeg';
 
 import { Product } from './product';
 
-const TEST_TITLE = 'Съешь ещё этих мягких французских булок, да выпей чаю';
-const TEST_DESCRIPTION = 'Lorem, ipsum.';
-const TEST_PRICE = 100;
-const TEST_ID = 1;
-const TEST_LINK = getProductUrl(TEST_ID);
+const testProduct = {
+  title: 'Съешь ещё этих мягких французских булок, да выпей чаю',
+  description: 'Описание продукта',
+  id: 1,
+  link: getProductUrl(1),
+  image: imageUrl,
+  price: 200,
+};
 
 describe('Product component', () => {
   describe('Render tests', () => {
     it('should render correctly', () => {
       render(
         <Product
-          title={TEST_TITLE}
-          id={TEST_ID}
-          image={testImageUrl}
-          price={TEST_PRICE}
+          title={testProduct.title}
+          id={testProduct.id}
+          image={testProduct.image}
+          price={testProduct.price}
         />,
         { wrapper: BrowserRouter }
       );
@@ -34,87 +37,87 @@ describe('Product component', () => {
     it('should render title correctly', () => {
       render(
         <Product
-          title={TEST_TITLE}
-          id={TEST_ID}
-          image={testImageUrl}
-          price={TEST_PRICE}
+          title={testProduct.title}
+          id={testProduct.id}
+          image={testProduct.image}
+          price={testProduct.price}
         />,
         { wrapper: BrowserRouter }
       );
 
-      expect(screen.getByText(TEST_TITLE)).toBeInTheDocument();
+      expect(screen.getByText(testProduct.title)).toBeInTheDocument();
     });
 
     it('should add href attribute correctly', () => {
       render(
         <Product
-          title={TEST_TITLE}
-          id={TEST_ID}
-          image={testImageUrl}
-          price={TEST_PRICE}
+          title={testProduct.title}
+          id={testProduct.id}
+          image={testProduct.image}
+          price={testProduct.price}
         />,
         { wrapper: BrowserRouter }
       );
 
-      expect(screen.getByRole('link')).toHaveAttribute('href', TEST_LINK);
+      expect(screen.getByRole('link')).toHaveAttribute('href', testProduct.link);
     });
 
     it('should render image correctly', () => {
       render(
         <Product
-          title={TEST_TITLE}
-          id={TEST_ID}
-          image={testImageUrl}
-          price={TEST_PRICE}
+          title={testProduct.title}
+          id={testProduct.id}
+          image={testProduct.image}
+          price={testProduct.price}
         />,
         { wrapper: BrowserRouter }
       );
 
       const image = screen.getByRole('img');
-      expect(image).toHaveAttribute('src', testImageUrl);
+      expect(image).toHaveAttribute('src', testProduct.image);
     });
 
     it('should render price correctly', () => {
       render(
         <Product
-          title={TEST_TITLE}
-          id={TEST_ID}
-          image={testImageUrl}
-          price={TEST_PRICE}
+          title={testProduct.title}
+          id={testProduct.id}
+          image={testProduct.image}
+          price={testProduct.price}
         />,
         { wrapper: BrowserRouter }
       );
 
-      expect(screen.getByText(TEST_PRICE)).toBeInTheDocument();
+      expect(screen.getByText(testProduct.price)).toBeInTheDocument();
     });
 
     it('should not render description', () => {
       render(
         <Product
-          title={TEST_TITLE}
-          id={TEST_ID}
-          image={testImageUrl}
-          price={TEST_PRICE}
+          title={testProduct.title}
+          id={testProduct.id}
+          image={testProduct.image}
+          price={testProduct.price}
         />,
         { wrapper: BrowserRouter }
       );
 
-      expect(screen.queryByText(TEST_DESCRIPTION)).not.toBeInTheDocument();
+      expect(screen.queryByText(testProduct.description)).toBeNull();
     });
 
     it('should render description', () => {
       render(
         <Product
-          title={TEST_TITLE}
-          id={TEST_ID}
-          image={testImageUrl}
-          price={TEST_PRICE}
-          subtitle={TEST_DESCRIPTION}
+          title={testProduct.title}
+          id={testProduct.id}
+          image={testProduct.image}
+          price={testProduct.price}
+          subtitle={testProduct.description}
         />,
         { wrapper: BrowserRouter }
       );
 
-      expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
+      expect(screen.getByText(testProduct.description)).toBeInTheDocument();
     });
   });
 });

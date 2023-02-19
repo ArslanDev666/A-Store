@@ -8,7 +8,7 @@ import { notificationsActions } from '../notifications';
 import { productActions, StateProductType } from './slice';
 import { getProductPayloadType } from './types';
 
-function* getProductsSaga(action: PayloadAction<getProductPayloadType>) {
+export function* getProductsSaga(action: PayloadAction<getProductPayloadType>) {
   try {
     const product: StateProductType = yield call(getProduct, action.payload.id);
 

@@ -1,0 +1,167 @@
+export const ownDesignProductsWithCategoryMock = [
+  {
+    id: 0,
+    title: 'Бархатные стикеры',
+    description: 'Тактильный антистресс',
+    products: [
+      {
+        id: 5,
+        preview: 'http://qa-games.ru/astore/public/images/43306375.jpeg',
+        images: [
+          'https://thumb.tildacdn.com/stor3866-6439-4632-b936-343331383463/-/cover/560x745/center/center/-/format/webp/89792319.png',
+          'http://qa-games.ru/astore/public/images/25133982.png',
+          'http://qa-games.ru/astore/public/images/93661622.png',
+          'https://thumb.tildacdn.com/stor3861-6236-4739-b335-666539613462/-/cover/560x745/center/center/-/format/webp/95291281.png',
+          'http://qa-games.ru/astore/public/images/1_3d.png',
+          'http://qa-games.ru/astore/public/images/2_3d.png',
+          'http://qa-games.ru/astore/public/images/45157942.png',
+          'http://qa-games.ru/astore/public/images/Frame_118.png',
+        ],
+        title: 'Худи с бархатными стикерами',
+        subtitle: 'Выберите один из восьми стикеров',
+        price: 4199,
+        description:
+          'Выберите стикер, а мы перенесём его на ткань — как на фото. Одежду можно стирать в машинке при 30 °C, вывернув наизнанку. Гладить — с внутренней стороны.\n\nПосмотреть и потрогать все стикеры можно в A-Store на Технопарке. А ещё там можно добавить сразу несколько стикеров на одну вещь.',
+        colors: ['white', 'black', 'red'],
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        stickerNumbers: [1, 2, 3, 4, 5, 6, 7, 8],
+        availability: true,
+      },
+      {
+        id: 6,
+        preview: 'http://qa-games.ru/astore/public/images/61646585.png',
+        images: [
+          'http://qa-games.ru/astore/public/images/61646585.png',
+          'http://qa-games.ru/astore/public/images/29918301.png',
+          'http://qa-games.ru/astore/public/images/23597101.png',
+          'http://qa-games.ru/astore/public/images/79160052.png',
+          'http://qa-games.ru/astore/public/images/34570797.png',
+          'http://qa-games.ru/astore/public/images/95291281.png',
+          'http://qa-games.ru/astore/public/images/1_3d.png',
+          'http://qa-games.ru/astore/public/images/2_3d.png',
+          'http://qa-games.ru/astore/public/images/45157942.png',
+          'http://qa-games.ru/astore/public/images/Frame_117.png',
+        ],
+        title: 'Футболка с бархатными стикерами',
+        subtitle: 'Все варианты — внутри',
+        price: 1799,
+        description:
+          'Выберите стикер, а мы перенесём его на ткань — как на фото. Одежду можно стирать в машинке при 30 °C, вывернув наизнанку. Гладить — с внутренней стороны.\n\nПосмотреть и потрогать все стикеры можно в A-Store на Технопарке. А ещё там можно добавить сразу несколько стикеров на одну вещь.',
+        colors: ['black', 'red', 'white', 'green', 'gray'],
+        sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        stickerNumbers: [1, 2, 3, 4, 5, 6, 7, 8],
+        availability: true,
+      },
+      {
+        id: 7,
+        preview: 'http://qa-games.ru/astore/public/images/51168667.png',
+        images: [
+          'http://qa-games.ru/astore/public/images/51168667.png',
+          'http://qa-games.ru/astore/public/images/54431023.png',
+          'http://qa-games.ru/astore/public/images/18640580.png',
+          'http://qa-games.ru/astore/public/images/11697722.png',
+          'http://qa-games.ru/astore/public/images/95291281.png',
+          'http://qa-games.ru/astore/public/images/1_3d.png',
+          'http://qa-games.ru/astore/public/images/2_3d.png',
+          'http://qa-games.ru/astore/public/images/45157942.png',
+          'http://qa-games.ru/astore/public/images/Frame_119.png',
+        ],
+        title: 'Футболка оверсайз с бархатными стикерами',
+        subtitle: 'Нажмите, чтобы выбрать стикер',
+        price: 1799,
+        description:
+          'Выберите стикер, а мы перенесём его на ткань — как на фото. Одежду можно стирать в машинке при 30 °C, вывернув наизнанку. Гладить — с внутренней стороны.\n\nПосмотреть и потрогать все стикеры можно в A-Store на Технопарке. А ещё там можно добавить сразу несколько стикеров на одну вещь.',
+        colors: ['gray', 'red', 'white', 'black'],
+        sizes: ['S', 'M', 'L', 'XL'],
+        stickerNumbers: [1, 2, 3, 4, 5, 6, 7, 8],
+        availability: true,
+      },
+    ],
+  },
+];
+
+export const ownDesignProductsMock = [
+  {
+    id: 5,
+    preview: 'http://qa-games.ru/astore/public/images/43306375.jpeg',
+    images: [
+      'https://thumb.tildacdn.com/stor3866-6439-4632-b936-343331383463/-/cover/560x745/center/center/-/format/webp/89792319.png',
+      'http://qa-games.ru/astore/public/images/25133982.png',
+      'http://qa-games.ru/astore/public/images/93661622.png',
+      'https://thumb.tildacdn.com/stor3861-6236-4739-b335-666539613462/-/cover/560x745/center/center/-/format/webp/95291281.png',
+      'http://qa-games.ru/astore/public/images/1_3d.png',
+      'http://qa-games.ru/astore/public/images/2_3d.png',
+      'http://qa-games.ru/astore/public/images/45157942.png',
+      'http://qa-games.ru/astore/public/images/Frame_118.png',
+    ],
+    title: 'Худи с бархатными стикерами',
+    subtitle: 'Выберите один из восьми стикеров',
+    price: 4199,
+    description:
+      'Выберите стикер, а мы перенесём его на ткань — как на фото. Одежду можно стирать в машинке при 30 °C, вывернув наизнанку. Гладить — с внутренней стороны.\n\nПосмотреть и потрогать все стикеры можно в A-Store на Технопарке. А ещё там можно добавить сразу несколько стикеров на одну вещь.',
+    colors: ['white', 'black', 'red'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    stickerNumbers: [1, 2, 3, 4, 5, 6, 7, 8],
+    availability: true,
+  },
+  {
+    id: 6,
+    preview: 'http://qa-games.ru/astore/public/images/61646585.png',
+    images: [
+      'http://qa-games.ru/astore/public/images/61646585.png',
+      'http://qa-games.ru/astore/public/images/29918301.png',
+      'http://qa-games.ru/astore/public/images/23597101.png',
+      'http://qa-games.ru/astore/public/images/79160052.png',
+      'http://qa-games.ru/astore/public/images/34570797.png',
+      'http://qa-games.ru/astore/public/images/95291281.png',
+      'http://qa-games.ru/astore/public/images/1_3d.png',
+      'http://qa-games.ru/astore/public/images/2_3d.png',
+      'http://qa-games.ru/astore/public/images/45157942.png',
+      'http://qa-games.ru/astore/public/images/Frame_117.png',
+    ],
+    title: 'Футболка с бархатными стикерами',
+    subtitle: 'Все варианты — внутри',
+    price: 1799,
+    description:
+      'Выберите стикер, а мы перенесём его на ткань — как на фото. Одежду можно стирать в машинке при 30 °C, вывернув наизнанку. Гладить — с внутренней стороны.\n\nПосмотреть и потрогать все стикеры можно в A-Store на Технопарке. А ещё там можно добавить сразу несколько стикеров на одну вещь.',
+    colors: ['black', 'red', 'white', 'green', 'gray'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    stickerNumbers: [1, 2, 3, 4, 5, 6, 7, 8],
+    availability: true,
+  },
+];
+
+export const madeInAlfaProductsMock = [
+  {
+    id: 0,
+    preview:
+      'https://thumb.tildacdn.com/stor6531-3139-4435-b365-653562306137/-/resize/480x480/-/format/webp/98058636.jpg',
+    images: [
+      'https://thumb.tildacdn.com/stor6531-3139-4435-b365-653562306137/-/resize/480x480/-/format/webp/98058636.jpg',
+      'http://qa-games.ru/astore/public/images/15586005.jpeg',
+      'http://qa-games.ru/astore/public/images/45862782.jpeg',
+      'http://qa-games.ru/astore/public/images/75259815.jpeg',
+    ],
+    title: 'Рюкзак «Для умных и свободных»',
+    description:
+      'Поместится и ноутбук, и худи. У рюкзака широкие красные лямки и светоотражающие элементы — вас заметят и днём, и ночью.',
+    price: 4999,
+    availability: true,
+  },
+  {
+    id: 1,
+    preview: 'http://qa-games.ru/astore/public/images/68519498.jpeg',
+    images: [
+      'https://thumb.tildacdn.com/stor3235-6562-4430-a362-643062633265/-/cover/560x745/center/center/-/format/webp/40113449.jpg',
+      'http://qa-games.ru/astore/public/images/56653281.jpeg',
+      'http://qa-games.ru/astore/public/images/22582542.jpeg',
+    ],
+    title: 'Футболка Для умных и свободных',
+    description:
+      'Мягкая хлопковая футболка для тех, кто любит быть в центре внимания. Состав и способ ухода вынесли на самое видное место.',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['white', 'black', 'red'],
+    price: 1999,
+    availability: true,
+  },
+];

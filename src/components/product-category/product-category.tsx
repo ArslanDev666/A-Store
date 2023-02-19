@@ -32,11 +32,7 @@ type PropsType = {
 const ProductCategory = ({ description, products, title, id }: PropsType) => {
   return (
     <section data-test-id='product-category'>
-      <SectionTitle
-        title={title}
-        description={description}
-        colorTitle='primary'
-      />
+      <SectionTitle title={title} description={description} colorTitle='primary' />
 
       <Gap size='6xl' />
 

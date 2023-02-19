@@ -1,3 +1,3 @@
 export type getProductPayloadType = {
-  id?: string;
+  id: string;
 };

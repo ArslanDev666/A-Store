@@ -8,7 +8,7 @@ type OwnDesignStateType = {
   hasError: boolean;
 };
 
-const initialState: OwnDesignStateType = {
+export const initialState: OwnDesignStateType = {
   products: [],
   isLoading: false,
   hasError: false,
@@ -21,10 +21,10 @@ const request: CaseReducer<OwnDesignStateType> = (state) => {
   state.hasError = false;
 };
 
-const success: CaseReducer<
-  OwnDesignStateType,
-  PayloadAction<CategoryType[]>
-> = (state, { payload }) => {
+const success: CaseReducer<OwnDesignStateType, PayloadAction<CategoryType[]>> = (
+  state,
+  { payload }
+) => {
   state.isLoading = false;
   state.hasError = false;
   state.products = payload;
@@ -35,13 +35,12 @@ const failure: CaseReducer<OwnDesignStateType> = (state) => {
   state.hasError = true;
 };
 
-export const { reducer: ownDesignReducer, actions: ownDesignActions } =
-  createSlice({
-    name: NAME,
-    initialState: initialState,
-    reducers: {
-      request,
-      success,
-      failure,
-    },
-  });
+export const { reducer: ownDesignReducer, actions: ownDesignActions } = createSlice({
+  name: NAME,
+  initialState: initialState,
+  reducers: {
+    request,
+    success,
+    failure,
+  },
+});

@@ -18,11 +18,7 @@ const HomePage = () => {
         A-Store
       </Typography.Title>
 
-      <Card
-        image={madeInAlfaImage}
-        title='Сделано в Альфе'
-        to={ROUTES.madeInAlfa}
-      />
+      <Card image={madeInAlfaImage} title='Сделано в Альфе' to={ROUTES.madeInAlfa} />
       <Card image={ownDesignImage} title='Свой дизайн' to={ROUTES.ownDesign} />
     </div>
   );

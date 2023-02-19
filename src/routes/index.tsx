@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { HomePage } from 'pages/home';
 import { MadeInAlfaPage } from 'pages/made-in-alfa';
 import { OwnDesignPage } from 'pages/own-design';
@@ -8,7 +8,7 @@ import { AppLayout } from 'components/app-layout';
 
 import { ROUTES } from './constants';
 
-export const routerConfig = [
+export const routerConfig: RouteObject[] = [
   {
     element: <AppLayout hasFooter={false} />,
     children: [

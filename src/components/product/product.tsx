@@ -38,11 +38,7 @@ const SIZE_IMAGE = 370;
 
 const Product = memo(({ subtitle, image, title, price, id }: PropsType) => {
   return (
-    <Link
-      to={getProductUrl(id)}
-      className={styles.product}
-      data-test-id='product'
-    >
+    <Link to={getProductUrl(id)} className={styles.product} data-test-id='product'>
       <div className={styles.productImage}>
         <img src={image} alt={title} width={SIZE_IMAGE} height={SIZE_IMAGE} />
       </div>

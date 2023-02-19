@@ -32,20 +32,12 @@ const Header = () => {
         A-Store
       </Link>
 
-      <button
-        className={styles.sidebarToggle}
-        type='button'
-        onClick={handleOpenSidebarClick}
-      >
+      <button className={styles.sidebarToggle} type='button' onClick={handleOpenSidebarClick}>
         <span>меню</span>
         <ListMIcon />
       </button>
 
-      <Drawer
-        open={showNavigationSidebar}
-        onClose={handleCloseSidebar}
-        className={styles.sidebar}
-      >
+      <Drawer open={showNavigationSidebar} onClose={handleCloseSidebar} className={styles.sidebar}>
         <NavigationSidebar />
       </Drawer>
     </header>

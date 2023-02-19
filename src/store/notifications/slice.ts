@@ -7,7 +7,7 @@ export type NotificationsStateType = {
   notifications: NotificationProps[];
 };
 
-const initialState: NotificationsStateType = {
+export const initialState: NotificationsStateType = {
   notifications: [],
 };
 
@@ -15,10 +15,7 @@ const NAME = 'notifications';
 
 type AddNotificationProps = NotificationProps & { id?: string };
 
-const success: CaseReducer<
-  NotificationsStateType,
-  PayloadAction<AddNotificationProps>
-> = (
+const success: CaseReducer<NotificationsStateType, PayloadAction<AddNotificationProps>> = (
   state,
   { payload: { title, children = '', id, autoCloseDelay = 5000 } }
 ) => {
@@ -31,10 +28,7 @@ const success: CaseReducer<
   });
 };
 
-const error: CaseReducer<
-  NotificationsStateType,
-  PayloadAction<AddNotificationProps>
-> = (
+const error: CaseReducer<NotificationsStateType, PayloadAction<AddNotificationProps>> = (
   state,
   { payload: { title, children = '', id, autoCloseDelay = 5000 } }
 ) => {
@@ -47,10 +41,7 @@ const error: CaseReducer<
   });
 };
 
-const neutral: CaseReducer<
-  NotificationsStateType,
-  PayloadAction<AddNotificationProps>
-> = (
+const neutral: CaseReducer<NotificationsStateType, PayloadAction<AddNotificationProps>> = (
   state,
   { payload: { title, children = '', autoCloseDelay = 5000, id } }
 ) => {
@@ -62,23 +53,17 @@ const neutral: CaseReducer<
   });
 };
 
-const remove: CaseReducer<NotificationsStateType, PayloadAction<string>> = (
-  state,
-  { payload }
-) => {
-  state.notifications = state.notifications.filter(
-    (notification) => notification.id !== payload
-  );
+const remove: CaseReducer<NotificationsStateType, PayloadAction<string>> = (state, { payload }) => {
+  state.notifications = state.notifications.filter((notification) => notification.id !== payload);
 };
 
-export const { reducer: notificationsReducer, actions: notificationsActions } =
-  createSlice({
-    name: NAME,
-    initialState,
-    reducers: {
-      success,
-      error,
-      neutral,
-      remove,
-    },
-  });
+export const { reducer: notificationsReducer, actions: notificationsActions } = createSlice({
+  name: NAME,
+  initialState,
+  reducers: {
+    success,
+    error,
+    neutral,
+    remove,
+  },
+});

@@ -1,7 +1,6 @@
 import React, { FormEvent, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useForm } from 'hooks/useForm';
 
 import { Amount } from '@alfalab/core-components/amount';
 import { Button } from '@alfalab/core-components/button';
@@ -17,11 +16,7 @@ import { Typography } from '@alfalab/core-components/typography';
 import { Container } from 'components/ui/container';
 
 import { useAppDispatch } from 'store';
-import {
-  isLoadingSelector,
-  productActions,
-  productSelector,
-} from 'store/product';
+import { isLoadingSelector, productActions, productSelector } from 'store/product';
 
 import { getProductSelectValues } from 'utils/get-product-select-values';
 
@@ -36,10 +31,6 @@ type ParamsType = {
    * Id товара
    */
   productId: string;
-  /**
-   * Id категории
-   */
-  categoryId: string;
 };
 
 type FormStateType = {
@@ -51,13 +42,6 @@ type FormStateType = {
 
 const INITIAL_PREVIEW = 0;
 
-const initialValues: FormStateType = {
-  color: null,
-  size: null,
-  sticker: null,
-  model: null,
-};
-
 const ProductPage = () => {
   const dispatch = useAppDispatch();
   const product = useSelector(productSelector);
@@ -66,42 +50,57 @@ const ProductPage = () => {
   const { productId } = useParams<ParamsType>();
   const [selectPreview, setSelectPreview] = useState(INITIAL_PREVIEW);
 
-  const { colors, models, sizes, stickers, isShowForm } = useMemo(() => {
+  const productParams = useMemo(() => {
+    if (!product) return null;
+
     const sizes = getProductSelectValues(product?.sizes);
     const colors = getProductSelectValues(product?.colors);
-    const stickers = getProductSelectValues(
-      (product as CustomProductType)?.stickerNumbers
-    );
+    const stickers = getProductSelectValues((product as CustomProductType)?.stickerNumbers);
     const models = getProductSelectValues((product as ProductType)?.models);
-
-    const isShowForm = Boolean(sizes || colors || stickers || models);
 
     return {
       sizes,
       colors,
       stickers,
       models,
-      isShowForm,
     };
   }, [product]);
 
-  const { setValues } = useForm<FormStateType>(initialValues);
+  const [values, setValues] = useState<FormStateType | null>(null);
 
   useEffect(() => {
-    dispatch(productActions.request({ id: productId }));
+    dispatch(productActions.request({ id: productId! }));
 
     return () => {
       dispatch(productActions.reset());
     };
   }, [dispatch, productId]);
 
-  const handleSelectChange: SelectResponsiveProps['onChange'] = ({
-    selected,
-    name,
-  }) => {
-    if (!selected || !name) return;
+  useEffect(() => {
+    if (!productParams) return;
 
-    setValues((prevValues) => ({ ...prevValues, [name]: selected }));
+    const updateValues = {} as FormStateType;
+
+    if (productParams.colors?.length) {
+      updateValues.color = productParams.colors[0];
+    }
+    if (productParams.sizes?.length) {
+      updateValues.size = productParams.sizes[0];
+    }
+    if (productParams.stickers?.length) {
+      updateValues.sticker = productParams.stickers[0];
+    }
+    if (productParams.models?.length) {
+      updateValues.model = productParams.models[0];
+    }
+
+    setValues(updateValues);
+  }, [productParams]);
+
+  const handleSelectChange: SelectResponsiveProps['onChange'] = ({ selected, name }) => {
+    if (!selected || !name || !values) return;
+
+    setValues((prevValues) => ({ ...(prevValues as FormStateType), [name]: selected }));
   };
 
   const handleFormSubmit = (e: FormEvent) => {
@@ -115,7 +114,6 @@ const ProductPage = () => {
       <Typography.Title tag='h1' hidden>
         {product?.title}
       </Typography.Title>
-
       <Container>
         <Spinner visible={isLoading} size='m' />
 
@@ -137,25 +135,21 @@ const ProductPage = () => {
               <Gap size='l' />
 
               <Typography.TitleResponsive view='xsmall' tag='div'>
-                <Amount
-                  value={product.price}
-                  currency='RUR'
-                  minority={1}
-                  bold='full'
-                />
+                <Amount value={product.price} currency='RUR' minority={1} bold='full' />
               </Typography.TitleResponsive>
 
               <form onSubmit={handleFormSubmit} className={styles.form}>
-                {isShowForm && (
+                {values && productParams && (
                   <Space size='m' fullWidth dataTestId='product-params'>
-                    {sizes?.length ? (
+                    {productParams.sizes?.length ? (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
-                        options={sizes}
-                        placeholder='Размер'
+                        options={productParams.sizes}
+                        placeholder='Выберите размер'
                         label='Размер'
                         onChange={handleSelectChange}
+                        selected={values.size}
                         block={true}
                         name='size'
                         labelView='outer'
@@ -163,14 +157,15 @@ const ProductPage = () => {
                       />
                     ) : null}
 
-                    {colors?.length ? (
+                    {productParams.colors?.length ? (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
-                        options={colors}
-                        placeholder='Цвет'
+                        options={productParams.colors}
+                        placeholder='Выберите цвет'
                         label='Цвет'
                         onChange={handleSelectChange}
+                        selected={values.color}
                         block={true}
                         name='color'
                         labelView='outer'
@@ -178,14 +173,15 @@ const ProductPage = () => {
                       />
                     ) : null}
 
-                    {stickers?.length ? (
+                    {productParams.stickers?.length ? (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
-                        options={stickers}
-                        placeholder='Номер стикера'
+                        options={productParams.stickers}
+                        placeholder='Выберите номер стикера'
                         label='Номер стикера'
                         onChange={handleSelectChange}
+                        selected={values.sticker}
                         block={true}
                         name='sticker'
                         labelView='outer'
@@ -193,14 +189,16 @@ const ProductPage = () => {
                       />
                     ) : null}
 
-                    {models?.length ? (
+                    {productParams.models?.length ? (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
-                        options={models}
-                        placeholder='Модель'
+                        options={productParams.models}
+                        placeholder='Выберите модель телефона'
                         label='Модель'
                         block={true}
+                        onChange={handleSelectChange}
+                        selected={values.model}
                         labelView='outer'
                         dataTestId='product-select-model'
                       />

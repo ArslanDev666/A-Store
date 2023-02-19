@@ -7,7 +7,7 @@ import { notificationsActions } from '../notifications';
 import { ProductType } from './../../types/product';
 import { madeInAlfaActions } from './slice';
 
-function* getMadeInAlfaSaga() {
+export function* getMadeInAlfaSaga() {
   try {
     const products: ProductType[] = yield call(getMadeInAlfaProducts);
 

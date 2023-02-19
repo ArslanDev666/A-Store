@@ -27,30 +27,15 @@ type PropsType = {
 };
 
 const ProductGallery = memo(
-  ({
-    initialPreview,
-    handleChangePreview,
-    images,
-    title,
-    className,
-  }: PropsType) => {
+  ({ initialPreview, handleChangePreview, images, title, className }: PropsType) => {
     const handleImageClick = (index: number) => {
-      if (index >= images.length) return;
-
       handleChangePreview(index);
     };
 
     return (
-      <div
-        data-test-id='product-gallery'
-        className={cn(styles.galleryWrapper, className)}
-      >
+      <div data-test-id='product-gallery' className={cn(styles.galleryWrapper, className)}>
         <div className={styles.galleryPreview}>
-          <img
-            src={images[initialPreview]}
-            alt={title}
-            data-test-id='product-gallery-preview'
-          />
+          <img src={images[initialPreview]} alt={title} data-test-id='product-gallery-preview' />
         </div>
 
         <ul className={styles.galleryImages}>
@@ -64,11 +49,7 @@ const ProductGallery = memo(
                 role='tab'
                 aria-selected={index === initialPreview}
               >
-                <img
-                  src={image}
-                  alt={title}
-                  data-test-id='product-gallery-image'
-                />
+                <img src={image} alt={title} data-test-id='product-gallery-image' />
               </button>
             </li>
           ))}

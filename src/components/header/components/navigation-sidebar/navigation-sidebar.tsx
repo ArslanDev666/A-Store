@@ -75,12 +75,7 @@ const NavigationSidebar = () => {
             {NAVIGATION_LINKS.map((link) => (
               <li key={link.href}>
                 <Title>
-                  <Link
-                    href={link.href}
-                    Component={NavLink}
-                    underline={false}
-                    colors='inverted'
-                  >
+                  <Link href={link.href} Component={NavLink} underline={false} colors='inverted'>
                     {link.text}
                   </Link>
                 </Title>
@@ -91,12 +86,7 @@ const NavigationSidebar = () => {
 
         <div className={styles.navigationCopyright}>
           <Typography.Text view='primary-small' weight='bold'>
-            <Link
-              href={PRIVACY_POLICY_LINK}
-              underline={false}
-              colors='inverted'
-              target='_blank'
-            >
+            <Link href={PRIVACY_POLICY_LINK} underline={false} colors='inverted' target='_blank'>
               Политика конфиденциальности <br /> и обработки персональных данных
             </Link>
           </Typography.Text>

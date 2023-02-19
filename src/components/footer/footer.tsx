@@ -12,9 +12,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer} data-test-id='footer'>
       <Container>
-        <Typography.Text weight='medium'>
-          © ООО «Альфа Фьюче Пипл», {CURRENT_YEAR}
-        </Typography.Text>
+        <Typography.Text weight='medium'>© ООО «Альфа Фьюче Пипл», {CURRENT_YEAR}</Typography.Text>
       </Container>
     </footer>
   );

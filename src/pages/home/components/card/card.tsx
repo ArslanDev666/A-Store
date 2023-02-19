@@ -26,12 +26,7 @@ const Card = ({ image, title, to }: PropsType) => {
     <Link className={styles.card} to={to} data-test-id='card'>
       <img src={image} alt={title} className={styles.cardImage} />
       <div className={styles.cardContent}>
-        <Typography.TitleResponsive
-          weight='bold'
-          view='medium'
-          tag='h2'
-          font='styrene'
-        >
+        <Typography.TitleResponsive weight='bold' view='medium' tag='h2' font='styrene'>
           {title}
         </Typography.TitleResponsive>
       </div>

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component Render tests should render correctly 1`] = `
+<footer
+  className="footer"
+  data-test-id="footer"
+>
+  <div
+    className="container"
+    data-test-id="container"
+  >
+    <span
+      className="typography__primary-medium_xcdcz typography__medium_xcdcz"
+    >
+      © ООО «Альфа Фьюче Пипл», 
+      2023
+    </span>
+  </div>
+</footer>
+`;

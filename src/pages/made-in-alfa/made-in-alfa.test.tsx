@@ -1,22 +1,39 @@
-import { BrowserRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+
+import { renderWithProviders } from 'utils/tests-utils';
+
+import { madeInAlfaProductsMock } from 'mocks/data/products';
 
 import { MadeInAlfaPage } from './made-in-alfa';
 
 describe('MadeInAlfa page', () => {
   describe('Render tests', () => {
     it('should render correctly', () => {
-      render(<MadeInAlfaPage />, { wrapper: BrowserRouter });
+      renderWithProviders(<MadeInAlfaPage />);
 
       expect(screen.getByTestId('made-in-alfa-page')).toBeInTheDocument();
     });
 
-    it('should render title correctly', () => {
-      render(<MadeInAlfaPage />, { wrapper: BrowserRouter });
+    it('should render products array', () => {
+      const preloadState = {
+        madeInAlfa: {
+          hasError: false,
+          isLoading: false,
+          products: madeInAlfaProductsMock,
+        },
+      };
 
-      const element = screen.getByRole('heading', { level: 1, hidden: true });
-      expect(element).toBeInTheDocument();
-      expect(element).toHaveTextContent('Сделано в Альфе');
+      renderWithProviders(
+        <MemoryRouter>
+          <MadeInAlfaPage />
+        </MemoryRouter>,
+        {
+          preloadedState: preloadState,
+        }
+      );
+
+      expect(screen.getAllByTestId('product')).toHaveLength(madeInAlfaProductsMock.length);
     });
   });
 });

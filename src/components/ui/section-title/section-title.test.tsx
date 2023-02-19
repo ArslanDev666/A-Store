@@ -29,20 +29,14 @@ describe('SectionTitle component', () => {
     });
 
     it('should render description correctly', () => {
-      render(
-        <SectionTitle title={TEST_TITLE} description={TEST_DESCRIPTION} />
-      );
+      render(<SectionTitle title={TEST_TITLE} description={TEST_DESCRIPTION} />);
 
       expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
     });
 
     it('should render with default color', () => {
       render(
-        <SectionTitle
-          title={TEST_TITLE}
-          description={TEST_DESCRIPTION}
-          colorTitle='default'
-        />
+        <SectionTitle title={TEST_TITLE} description={TEST_DESCRIPTION} colorTitle='default' />
       );
 
       const element = screen.getByText(TEST_TITLE);
@@ -52,11 +46,7 @@ describe('SectionTitle component', () => {
 
     it('should render with primary color', () => {
       render(
-        <SectionTitle
-          title={TEST_TITLE}
-          description={TEST_DESCRIPTION}
-          colorTitle='primary'
-        />
+        <SectionTitle title={TEST_TITLE} description={TEST_DESCRIPTION} colorTitle='primary' />
       );
 
       const element = screen.getByText(TEST_TITLE);

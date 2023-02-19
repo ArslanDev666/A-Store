@@ -21,9 +21,7 @@ test('should render useForm hook', () => {
   });
 
   act(() => {
-    result.current.handleChange(
-      event as unknown as React.ChangeEvent<HTMLInputElement>
-    );
+    result.current.handleChange(event as unknown as React.ChangeEvent<HTMLInputElement>);
   });
 
   expect(result.current.values.text).toBe('Note Two');

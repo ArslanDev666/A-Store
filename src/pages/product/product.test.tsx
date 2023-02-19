@@ -1,218 +1,130 @@
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
+import { setupServer } from 'msw/node';
+
+import { store } from 'store';
 
 import { renderWithProviders } from 'utils/tests-utils';
 
-import { routerConfig } from 'routes';
+import { ROUTES } from 'routes/constants';
+
+import { customProductMock, productMock } from 'mocks/data/product';
+import { getCustomProductMockHandler, getProductMockHandler } from 'mocks/handlers/product';
 
 import { ProductPage } from './product';
 
 describe('Render tests', () => {
-  it.skip('should render correctly', () => {
+  it('should render correctly', () => {
     renderWithProviders(<ProductPage />);
 
     expect(screen.getByTestId('product-page')).toBeInTheDocument();
   });
 });
 
-describe('Product page with product tests', () => {
-  it('should find product by url', () => {
-    const testProductId = '0';
-    const testProductTitle = 'Рюкзак «Для умных и свободных»';
+describe('With server tests', () => {
+  const routerConfig = [
+    {
+      path: ROUTES.product,
+      element: <ProductPage />,
+    },
+  ];
 
-    const testUrl = `/products/${testProductId}`;
+  const server = setupServer(getProductMockHandler, getCustomProductMockHandler);
+
+  beforeAll(() => server.listen());
+
+  afterEach(() => server.resetHandlers());
+
+  afterAll(() => server.close());
+
+  describe('Should get product correctly', () => {
+    it('should render product', async () => {
+      const router = createMemoryRouter(routerConfig, {
+        initialEntries: ['/products/3'],
+      });
+
+      renderWithProviders(<RouterProvider router={router} />, { store });
+
+      const title = await screen.findByRole('heading', {
+        level: 2,
+      });
+
+      expect(title).toBeInTheDocument();
+      expect(title).toHaveTextContent(productMock.title);
+    });
+
+    it('should render custom product', async () => {
+      const router = createMemoryRouter(routerConfig, {
+        initialEntries: ['/products/5'],
+      });
+
+      renderWithProviders(<RouterProvider router={router} />, { store });
+
+      const title = await screen.findByRole('heading', {
+        level: 2,
+      });
+
+      expect(title).toBeInTheDocument();
+      expect(title).toHaveTextContent(customProductMock.title);
+    });
+  });
+
+  describe('Functions tests', () => {
+    const DOWN_ARROW_KEY = { keyCode: 40 };
+    const ENTER_KEY = { keyCode: 13 };
 
     const router = createMemoryRouter(routerConfig, {
-      initialEntries: [testUrl],
+      initialEntries: ['/products/5'],
     });
 
-    renderWithProviders(<RouterProvider router={router} />);
+    it('should onChange select, if the same element is selected', async () => {
+      renderWithProviders(<RouterProvider router={router} />, { store });
 
-    const element = screen.getByRole('heading', {
-      level: 1,
-      hidden: true,
+      expect(await screen.findByText(customProductMock.sizes[0])).toBeInTheDocument();
+
+      const select = await screen.findByTestId('product-select-size');
+
+      expect(select).toBeInTheDocument();
+
+      fireEvent.click(select);
+      fireEvent.keyDown(select, DOWN_ARROW_KEY);
+      fireEvent.keyDown(select, DOWN_ARROW_KEY);
+      fireEvent.keyDown(select, ENTER_KEY);
+
+      expect(screen.getByText(customProductMock.sizes[1])).toBeInTheDocument();
     });
 
-    expect(element).toBeInTheDocument();
-    expect(element).toHaveTextContent(testProductTitle);
-  });
+    it('should onChange select, if the selected item is selected', async () => {
+      renderWithProviders(<RouterProvider router={router} />, { store });
 
-  it('should not found product by url', () => {
-    const testProductId = '-';
+      expect(await screen.findByText(customProductMock.sizes[0])).toBeInTheDocument();
 
-    const testUrl = `/products/${testProductId}`;
+      const select = await screen.findByTestId('product-select-size');
 
-    const router = createMemoryRouter(routerConfig, {
-      initialEntries: [testUrl],
+      fireEvent.click(select);
+      fireEvent.keyDown(select, DOWN_ARROW_KEY);
+      fireEvent.keyDown(select, ENTER_KEY);
+
+      expect(screen.getByText(customProductMock.sizes[0])).toBeInTheDocument();
     });
 
-    renderWithProviders(<RouterProvider router={router} />);
+    it('should show select models', async () => {
+      const routerWithModel = createMemoryRouter(routerConfig, {
+        initialEntries: ['/products/3'],
+      });
 
-    const element = screen.queryByRole('heading', {
-      level: 1,
-      hidden: true,
+      renderWithProviders(<RouterProvider router={routerWithModel} />, {
+        store,
+      });
+
+      expect(await screen.findByTestId('product-select-model')).toBeInTheDocument();
     });
 
-    expect(element).toBeNull();
-  });
-});
-
-describe('Product page with custom product tests', () => {
-  it('should find product by url', () => {
-    const testCategoryId = '0';
-    const testProductId = '5';
-    const testProductTitle = 'Худи с бархатными стикерами';
-
-    const testUrl = `/categories/${testCategoryId}/products/${testProductId}`;
-
-    const router = createMemoryRouter(routerConfig, {
-      initialEntries: [testUrl],
+    it('should call alert on submit click', async () => {
+      const alertMock = jest.spyOn(window, 'alert').mockImplementation();
+      renderWithProviders(<RouterProvider router={router} />, { store });
+      fireEvent.click(await screen.findByText('В корзину'));
+      expect(alertMock).toHaveBeenCalledTimes(1);
     });
-
-    renderWithProviders(<RouterProvider router={router} />);
-
-    const element = screen.getByRole('heading', {
-      level: 1,
-      hidden: true,
-    });
-
-    expect(element).toBeInTheDocument();
-    expect(element).toHaveTextContent(testProductTitle);
-  });
-
-  it('should not found product by url', () => {
-    const testCategoryId = '-';
-    const testProductId = '-';
-
-    const testUrl = `/categories/${testCategoryId}/products/${testProductId}`;
-
-    const router = createMemoryRouter(routerConfig, {
-      initialEntries: [testUrl],
-    });
-
-    renderWithProviders(<RouterProvider router={router} />);
-
-    const element = screen.queryByRole('heading', {
-      level: 1,
-      hidden: true,
-    });
-
-    expect(element).toBeNull();
-  });
-});
-
-describe('Functions tests', () => {
-  const DOWN_ARROW_KEY = { keyCode: 40 };
-  const ENTER_KEY = { keyCode: 13 };
-
-  const routerWithParams = createMemoryRouter(routerConfig, {
-    initialEntries: [`/categories/0/products/5`],
-  });
-
-  it('onChange select, if the same element is selected', async () => {
-    renderWithProviders(<RouterProvider router={routerWithParams} />);
-
-    expect(screen.getByText('XS')).toBeInTheDocument();
-
-    fireEvent.click(screen.getByTestId('product-select-size'));
-
-    fireEvent.keyDown(
-      screen.getByTestId('product-select-size'),
-      DOWN_ARROW_KEY
-    );
-    fireEvent.keyDown(
-      screen.getByTestId('product-select-size'),
-      DOWN_ARROW_KEY
-    );
-    fireEvent.keyDown(screen.getByTestId('product-select-size'), ENTER_KEY);
-
-    expect(screen.getByText('S')).toBeInTheDocument();
-    expect(screen.queryByText('XS')).toBeNull();
-  });
-
-  it('onChange select, if the selected item is selected', async () => {
-    renderWithProviders(<RouterProvider router={routerWithParams} />);
-
-    expect(screen.getByText('XS')).toBeInTheDocument();
-
-    fireEvent.click(screen.getByTestId('product-select-size'));
-
-    fireEvent.keyDown(
-      screen.getByTestId('product-select-size'),
-      DOWN_ARROW_KEY
-    );
-    fireEvent.keyDown(screen.getByTestId('product-select-size'), ENTER_KEY);
-
-    expect(screen.getByText('XS')).toBeInTheDocument();
-  });
-
-  it('onChange select color', () => {
-    const testImageUrl =
-      'https://thumb.tildacdn.com/stor3866-6439-4632-b936-343331383463/-/cover/560x745/center/center/-/format/webp/89792319.png';
-    const testUpdateImageUrl =
-      'http://qa-games.ru/astore/public/images/25133982.png';
-
-    renderWithProviders(<RouterProvider router={routerWithParams} />);
-
-    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
-      'src',
-      testImageUrl
-    );
-
-    fireEvent.click(screen.getByTestId('product-select-color'));
-
-    fireEvent.keyDown(
-      screen.getByTestId('product-select-color'),
-      DOWN_ARROW_KEY
-    );
-    fireEvent.keyDown(
-      screen.getByTestId('product-select-color'),
-      DOWN_ARROW_KEY
-    );
-    fireEvent.keyDown(screen.getByTestId('product-select-color'), ENTER_KEY);
-
-    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
-      'src',
-      testUpdateImageUrl
-    );
-  });
-
-  it('onChange select color, if the selected item is selected', () => {
-    const testImageUrl =
-      'https://thumb.tildacdn.com/stor3866-6439-4632-b936-343331383463/-/cover/560x745/center/center/-/format/webp/89792319.png';
-
-    renderWithProviders(<RouterProvider router={routerWithParams} />);
-
-    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
-      'src',
-      testImageUrl
-    );
-
-    fireEvent.click(screen.getByTestId('product-select-color'));
-    fireEvent.keyDown(
-      screen.getByTestId('product-select-color'),
-      DOWN_ARROW_KEY
-    );
-    fireEvent.keyDown(screen.getByTestId('product-select-color'), ENTER_KEY);
-
-    expect(screen.getByTestId('product-gallery-preview')).toHaveAttribute(
-      'src',
-      testImageUrl
-    );
-  });
-
-  it('Show select models', async () => {
-    const router = createMemoryRouter(routerConfig, {
-      initialEntries: ['/products/3'],
-    });
-    renderWithProviders(<RouterProvider router={router} />);
-    expect(screen.getByTestId('product-select-model')).toBeInTheDocument();
-  });
-
-  it('Alert on submit click', async () => {
-    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
-    renderWithProviders(<RouterProvider router={routerWithParams} />);
-    fireEvent.click(screen.getByText('В корзину'));
-    expect(alertMock).toHaveBeenCalledTimes(1);
   });
 });

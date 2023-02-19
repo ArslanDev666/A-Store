@@ -9,10 +9,7 @@ import { Container } from 'components/ui/container';
 import { SectionTitle } from 'components/ui/section-title';
 
 import { useAppSelector } from 'store';
-import {
-  ownDesignIsLoadingSelector,
-  ownDesignSelector,
-} from 'store/own-design';
+import { ownDesignIsLoadingSelector, ownDesignSelector } from 'store/own-design';
 
 import { CategoryType } from 'types/product-category';
 
@@ -53,15 +50,9 @@ const OwnDesignPage = () => {
             </ul>
             <Gap size='8xl' />
             <div className={styles.footer}>
-              <Typography.TitleResponsive
-                weight='medium'
-                tag='h4'
-                color='tertiary'
-                view='xsmall'
-              >
-                Посмотреть и потрогать все стикеры можно в A-Store на
-                Технопарке. А ещё там можно добавить сразу несколько стикеров на
-                одну вещь.
+              <Typography.TitleResponsive weight='medium' tag='h4' color='tertiary' view='xsmall'>
+                Посмотреть и потрогать все стикеры можно в A-Store на Технопарке. А ещё там можно
+                добавить сразу несколько стикеров на одну вещь.
               </Typography.TitleResponsive>
             </div>
           </>

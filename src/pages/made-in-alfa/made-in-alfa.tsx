@@ -9,10 +9,7 @@ import { Container } from 'components/ui/container';
 import { SectionTitle } from 'components/ui/section-title';
 
 import { useAppSelector } from 'store';
-import {
-  madeInAlfaIsLoadingSelector,
-  madeInAlfaSelector,
-} from 'store/made-in-alfa';
+import { madeInAlfaIsLoadingSelector, madeInAlfaSelector } from 'store/made-in-alfa';
 
 import { ProductType } from 'types/product';
 

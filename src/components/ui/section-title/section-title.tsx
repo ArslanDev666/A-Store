@@ -20,11 +20,7 @@ type PropsType = {
   colorTitle?: 'primary' | 'default';
 };
 
-const SectionTitle = ({
-  colorTitle = 'default',
-  description,
-  title,
-}: PropsType) => {
+const SectionTitle = ({ colorTitle = 'default', description, title }: PropsType) => {
   return (
     <div className={styles.root} data-test-id='section-title'>
       <Typography.TitleResponsive

@@ -1,19 +1,13 @@
 import { memo, useCallback, useMemo } from 'react';
 
-import {
-  Notification,
-  NotificationProps,
-} from '@alfalab/core-components/notification';
+import { Notification, NotificationProps } from '@alfalab/core-components/notification';
 import { NotificationManager } from '@alfalab/core-components/notification-manager';
 import { Spinner } from '@alfalab/core-components/spinner';
 
 import { useAppDispatch, useAppSelector } from 'store';
-import {
-  notificationsActions,
-  notificationsSelector,
-} from 'store/notifications';
+import { notificationsActions, notificationsSelector } from 'store/notifications';
 
-export const Notifications = memo(() => {
+export const AppNotifications = memo(() => {
   const dispatch = useAppDispatch();
   const { notifications } = useAppSelector(notificationsSelector);
 
@@ -27,8 +21,7 @@ export const Notifications = memo(() => {
   const notificationsList = useMemo(
     () =>
       notifications.map((notification: NotificationProps) => {
-        const { id, title, badge, autoCloseDelay, children } =
-          notification || {};
+        const { id, title, badge, autoCloseDelay, children } = notification;
 
         return (
           <Notification
@@ -37,9 +30,15 @@ export const Notifications = memo(() => {
             title={title}
             badge={badge}
             autoCloseDelay={autoCloseDelay}
+            dataTestId='app-notifications-item'
             leftAddons={
               badge ? null : (
-                <Spinner visible={true} size='s' colors='inverted' />
+                <Spinner
+                  visible={true}
+                  size='s'
+                  colors='inverted'
+                  dataTestId='app-notifications-spinner'
+                />
               )
             }
           >
@@ -52,6 +51,7 @@ export const Notifications = memo(() => {
 
   return (
     <NotificationManager
+      dataTestId='app-notifications'
       notifications={notificationsList}
       onRemoveNotification={handleRemoveNotification}
     />

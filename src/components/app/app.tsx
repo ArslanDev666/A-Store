@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 
-import { Notifications } from 'components/app-notification';
+import { AppNotifications } from 'components/app-notification';
 
 import { useAppDispatch } from 'store';
 import { madeInAlfaActions } from 'store/made-in-alfa';
@@ -22,7 +22,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
-      <Notifications />
+      <AppNotifications />
     </>
   );
 };

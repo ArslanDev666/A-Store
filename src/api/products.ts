@@ -10,16 +10,7 @@ export const getOwnDesignProducts = (): Promise<CategoryType[]> => {
     .get<CategoryType[]>(`${PRODUCTS_API}/your-design`)
     .then((response) => response.data)
     .catch((error: AxiosError) => {
-      if (error.response) {
-        throw new Error();
-        // error.response.status === 404
-        //   ? errors.api.notFound
-        //   : errors.api.server
-      } else if (error.request) {
-        throw new Error(error.request);
-      } else {
-        throw new Error(error.message);
-      }
+      throw new Error(error.message);
     });
 };
 
@@ -28,15 +19,6 @@ export const getMadeInAlfaProducts = (): Promise<ProductType[]> => {
     .get<ProductType[]>(`${PRODUCTS_API}/made-in-alfa`)
     .then((response) => response.data)
     .catch((error: AxiosError) => {
-      if (error.response) {
-        throw new Error();
-        // error.response.status === 404
-        //   ? errors.api.notFound
-        //   : errors.api.server
-      } else if (error.request) {
-        throw new Error(error.request);
-      } else {
-        throw new Error(error.message);
-      }
+      throw new Error(error.message);
     });
 };

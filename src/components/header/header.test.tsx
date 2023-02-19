@@ -1,9 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Header } from './header';
@@ -33,8 +29,8 @@ describe('Header component', () => {
 
       userEvent.click(screen.getByTestId('navigation-sidebar-close'));
 
-      await waitForElementToBeRemoved(() =>
-        screen.queryByTestId('navigation-sidebar')
+      await waitForElementToBeRemoved(screen.queryByTestId('navigation-sidebar')).then(() =>
+        expect(screen.queryByTestId('navigation-sidebar')).not.toBeInTheDocument()
       );
     });
   });

@@ -22,7 +22,7 @@ describe('Footer component', () => {
     it('should not be render footer', () => {
       render(<AppLayout hasFooter={false} />, { wrapper: BrowserRouter });
 
-      expect(screen.queryByTestId('footer')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('footer')).toBeNull();
     });
   });
 });
