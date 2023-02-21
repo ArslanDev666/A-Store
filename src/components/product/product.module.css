@@ -6,9 +6,6 @@
 
 .productImage {
   position: relative;
-
-  display: flex;
-
   aspect-ratio: 1 / 1;
 }
 

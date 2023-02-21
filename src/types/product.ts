@@ -50,5 +50,26 @@ export type CustomProductType = Omit<ProductType, 'models'> & {
   /**
    * Доступные номера стикеров
    */
-  stickerNumbers: number[];
+  stickerNumbers?: number[];
+};
+
+export type ProductParamType = { label: string; value: string };
+
+export type CartProductType = Pick<ProductType, 'id' | 'preview' | 'price' | 'title'> & {
+  /**
+   * Количество товара в корзине
+   */
+  count: number;
+  /**
+   * Итоговая цена товара: Кол-во * цена товара
+   */
+  totalPrice: number;
+  /**
+   * Итоговая цена товара: Кол-во * цена товара
+   */
+  params: ProductParamType[];
+  /**
+   * Уникальный идентификатор, нужен для рендера списка товаров
+   */
+  key: string;
 };
