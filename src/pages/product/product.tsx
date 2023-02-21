@@ -9,6 +9,7 @@ import {
   SelectResponsive,
   SelectResponsiveProps,
 } from '@alfalab/core-components/select/responsive';
+import { OptionShape } from '@alfalab/core-components/select/typings';
 import { Space } from '@alfalab/core-components/space';
 import { Spinner } from '@alfalab/core-components/spinner';
 import { Typography } from '@alfalab/core-components/typography';
@@ -16,11 +17,13 @@ import { Typography } from '@alfalab/core-components/typography';
 import { Container } from 'components/ui/container';
 
 import { useAppDispatch } from 'store';
+import { cartActions } from 'store/cart';
 import { isLoadingSelector, productActions, productSelector } from 'store/product';
 
+import { getNameParamText, ParamsNamesProductType } from 'utils/get-name-param';
 import { getProductSelectValues } from 'utils/get-product-select-values';
 
-import { CustomProductType, ProductType } from 'types/product';
+import { CartProductType, CustomProductType, ProductType } from 'types/product';
 
 import styles from './product.module.css';
 
@@ -33,13 +36,7 @@ type ParamsType = {
   productId: string;
 };
 
-type FormStateType = {
-  color: SelectResponsiveProps['selected'];
-  size: SelectResponsiveProps['selected'];
-  sticker: SelectResponsiveProps['selected'];
-  model: SelectResponsiveProps['selected'];
-};
-
+type FormStateType = Record<ParamsNamesProductType, SelectResponsiveProps['selected']>;
 const INITIAL_PREVIEW = 0;
 
 const ProductPage = () => {
@@ -98,15 +95,36 @@ const ProductPage = () => {
   }, [productParams]);
 
   const handleSelectChange: SelectResponsiveProps['onChange'] = ({ selected, name }) => {
-    if (!selected || !name || !values) return;
+    if (!selected || !name) return;
 
-    setValues((prevValues) => ({ ...(prevValues as FormStateType), [name]: selected }));
+    setValues((prevValues) => ({ ...prevValues!, [name]: selected }));
   };
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    alert('Товар добавлен в корзину');
+    const params: CartProductType['params'] = values
+      ? Object.keys(values).map((key) => {
+          const param = values[key as ParamsNamesProductType] as OptionShape;
+
+          return {
+            label: getNameParamText(key as ParamsNamesProductType),
+            value: param.value,
+          };
+        })
+      : [];
+
+    const addProduct: Omit<CartProductType, 'key'> = {
+      count: 1,
+      id: product!.id,
+      preview: product!.preview,
+      price: product!.price,
+      title: product!.title,
+      totalPrice: product!.price,
+      params,
+    };
+
+    dispatch(cartActions.add(addProduct));
   };
 
   return (

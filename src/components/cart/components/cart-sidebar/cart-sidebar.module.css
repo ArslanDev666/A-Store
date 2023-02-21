@@ -1,6 +1,15 @@
 .sidebarProducts {
-  padding: 40px 0;
   display: flex;
   flex-direction: column;
+
+  padding: 40px 0;
   gap: 24px;
+}
+
+.totalPrice {
+  display: block;
+
+  text-align: right;
+
+  font-style: italic;
 }

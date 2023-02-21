@@ -1,3 +1,5 @@
+import { CartProductType } from 'types/product';
+
 export const customProductMock = {
   id: 5,
   preview: 'http://qa-games.ru/astore/public/images/43306375.jpeg',
@@ -48,4 +50,15 @@ export const productMock = {
     'iPhone 14 Pro',
     'iPhone 14 Pro Max',
   ],
+};
+
+export const cartProductMock: CartProductType = {
+  id: 11,
+  preview: 'http://qa-games.ru/astore/public/images/89787126.png',
+  title: 'Худи с 3D-стикерами',
+  price: 4099,
+  count: 2,
+  params: [],
+  totalPrice: 8198,
+  key: '123123',
 };

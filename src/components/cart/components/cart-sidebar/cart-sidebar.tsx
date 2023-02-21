@@ -1,25 +1,20 @@
 import React from 'react';
 
+import { Amount } from '@alfalab/core-components/amount';
 import { Divider } from '@alfalab/core-components/divider';
+import { Gap } from '@alfalab/core-components/gap';
+import { Typography } from '@alfalab/core-components/typography';
 
-import { CartProductType } from 'types/product';
+import { useAppSelector } from 'store';
+import { cartSelector, cartTotalPriceSelector } from 'store/cart';
 
 import styles from './cart-sidebar.module.css';
 
 import { CartProduct } from '../cart-product';
 
 const CartSidebar = () => {
-  const product: CartProductType = {
-    id: 11,
-    preview: 'http://qa-games.ru/astore/public/images/89787126.png',
-    title: 'Худи с 3D-стикерами',
-    price: 4099,
-    count: 2,
-    params: [],
-    totalPrice: 8198,
-    key: '123123',
-  };
-  const products: CartProductType[] = [];
+  const products = useAppSelector(cartSelector);
+  const totalPrice = useAppSelector(cartTotalPriceSelector);
 
   return (
     <div data-test-id='cart-sidebar' className={styles.sidebar}>
@@ -35,6 +30,11 @@ const CartSidebar = () => {
           })}
         </ul>
       )}
+      <Divider />
+      <Gap size='m' />
+      <Typography.Text view='primary-large' weight='bold' className={styles.totalPrice}>
+        Сумма: <Amount value={totalPrice} currency='RUR' minority={1} bold='full' />
+      </Typography.Text>
     </div>
   );
 };

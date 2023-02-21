@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { Amount } from '@alfalab/core-components/amount';
@@ -10,6 +10,11 @@ import { CrossCircleMIcon } from '@alfalab/icons-glyph/CrossCircleMIcon';
 import { MinusCircleMIcon } from '@alfalab/icons-glyph/MinusCircleMIcon';
 import { PlusCircleMIcon } from '@alfalab/icons-glyph/PlusCircleMIcon';
 
+import { useAppDispatch } from 'store';
+import { cartActions } from 'store/cart';
+
+import { getProductUrl } from 'utils/product-url';
+
 import { CartProductType } from 'types/product';
 
 import styles from './cart-product.module.css';
@@ -20,8 +25,20 @@ type PropsType = {
 
 const IMAGE_SIZE = 70;
 
-const CartProduct = ({ product }: PropsType) => {
-  const { title, preview, count, totalPrice, params } = product;
+const CartProduct = memo(({ product }: PropsType) => {
+  const { title, preview, count, totalPrice, params, key } = product;
+
+  const dispatch = useAppDispatch();
+
+  const handleIncreaseProductClick = () => {
+    dispatch(cartActions.increaseProductCount(key));
+  };
+  const handleDecreaseProductClick = () => {
+    dispatch(cartActions.decreaseProductCount(key));
+  };
+  const handleDeleteProductClick = () => {
+    dispatch(cartActions.deleteProduct(key));
+  };
 
   return (
     <div data-test-id='cart-product' className={styles.product}>
@@ -31,7 +48,12 @@ const CartProduct = ({ product }: PropsType) => {
       <div className={styles.productInfoWrapper}>
         <div className={styles.productInfo}>
           <Typography.Text weight='bold' view='primary-medium'>
-            <Link href='123' Component={RouterLink} underline={false}>
+            <Link
+              href={getProductUrl(product.id)}
+              Component={RouterLink}
+              underline={false}
+              target='_blank'
+            >
               {title}
             </Link>
           </Typography.Text>
@@ -49,9 +71,21 @@ const CartProduct = ({ product }: PropsType) => {
           )}
         </div>
         <div className={styles.productCount}>
-          <IconButton view='primary' size='xxs' icon={PlusCircleMIcon} className={styles.icon} />
-          {count}
-          <IconButton view='primary' size='xxs' icon={MinusCircleMIcon} className={styles.icon} />
+          <IconButton
+            view='primary'
+            size='xxs'
+            icon={MinusCircleMIcon}
+            className={styles.icon}
+            onClick={handleDecreaseProductClick}
+          />
+          <div className={styles.productCountValue}>{count}</div>
+          <IconButton
+            view='primary'
+            size='xxs'
+            icon={PlusCircleMIcon}
+            className={styles.icon}
+            onClick={handleIncreaseProductClick}
+          />
         </div>
         <Typography.Text view='primary-medium' weight='bold' className={styles.productPriceWrapper}>
           <Amount
@@ -63,9 +97,15 @@ const CartProduct = ({ product }: PropsType) => {
           />
         </Typography.Text>
       </div>
-      <IconButton view='primary' size='xxs' icon={CrossCircleMIcon} className={styles.icon} />
+      <IconButton
+        view='primary'
+        size='xxs'
+        icon={CrossCircleMIcon}
+        className={styles.icon}
+        onClick={handleDeleteProductClick}
+      />
     </div>
   );
-};
+});
 
 export { CartProduct };

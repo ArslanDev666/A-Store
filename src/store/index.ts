@@ -2,6 +2,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
+import { cartReducer } from './cart';
 import { madeInAlfaReducer } from './made-in-alfa';
 import { notificationsReducer } from './notifications';
 import { ownDesignReducer } from './own-design';
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   ownDesign: ownDesignReducer,
   madeInAlfa: madeInAlfaReducer,
   product: productReducer,
+  cart: cartReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {

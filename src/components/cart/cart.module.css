@@ -19,6 +19,7 @@
 .sidebarHeader {
   padding-left: var(--gap-3xl);
 }
+
 .sidebarContent {
   padding: 0 var(--gap-3xl);
 }
@@ -27,6 +28,7 @@
   .sidebarHeader {
     padding-left: 0;
   }
+
   .sidebarContent {
     padding: 0 var(--gap-m);
   }

@@ -18,19 +18,21 @@ type PropsType = {
   hasCart?: boolean;
 };
 
-const AppLayout = ({ hasFooter = true, hasCart = true }: PropsType) => (
-  <div className={styles.layout} data-test-id='app-layout'>
-    <Header />
-    <div className={styles.content}>
-      <Outlet />
-    </div>
-    {hasFooter && <Footer />}
-    {hasCart && (
-      <div className={styles.cart}>
-        <Cart />
+const AppLayout = ({ hasFooter = true, hasCart = true }: PropsType) => {
+  return (
+    <div className={styles.layout} data-test-id='app-layout'>
+      <Header />
+      <div className={styles.content}>
+        <Outlet />
       </div>
-    )}
-  </div>
-);
+      {hasFooter && <Footer />}
+      {hasCart && (
+        <div className={styles.cart}>
+          <Cart />
+        </div>
+      )}
+    </div>
+  );
+};
 
 export { AppLayout };

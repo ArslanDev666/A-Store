@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { Amount } from '@alfalab/core-components/amount';
 import { Badge } from '@alfalab/core-components/badge';
@@ -8,6 +8,9 @@ import { TooltipDesktop } from '@alfalab/core-components/tooltip/desktop';
 import { Typography } from '@alfalab/core-components/typography';
 
 import { MarketplaceMWhiteIcon } from '@alfalab/icons-classic/MarketplaceMWhiteIcon';
+
+import { useAppSelector } from 'store';
+import { cartSelector, cartTotalPriceSelector } from 'store/cart';
 
 import styles from './cart.module.css';
 
@@ -19,19 +22,27 @@ const CART_SIZE = 80;
 const CART_TITLE = 'Ваш заказ';
 
 const Cart = memo(() => {
-  const price = 1232222;
-  const totalLength = 23;
-  const [open, setOpen] = React.useState(true);
+  const totalPrice = useAppSelector(cartTotalPriceSelector);
+  const products = useAppSelector(cartSelector);
+
+  const [open, setOpen] = React.useState(false);
+
+  const totalLength = useMemo(
+    () => products.reduce((acc, product) => (acc += product.count), 0),
+    [products]
+  );
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  if (totalLength === 0) return null;
 
   return (
     <>
       <TooltipDesktop
         content={
           <Typography.TitleResponsive tag='div' view='xsmall' weight='bold'>
-            = <Amount value={price} currency='RUR' minority={1} bold='full' />
+            = <Amount value={totalPrice} currency='RUR' minority={1} bold='full' />
           </Typography.TitleResponsive>
         }
         colors='inverted'

@@ -4,5 +4,6 @@ export const getProductSelectValues = (array?: string[] | number[]) => {
   return array.map((sticker, index) => ({
     key: index.toString(),
     content: sticker,
+    value: sticker,
   }));
 };
