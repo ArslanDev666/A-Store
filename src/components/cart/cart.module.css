@@ -1,0 +1,25 @@
+.cart {
+  --badge-icon-bg-color: var(--color-black);
+  background: none;
+}
+
+.cartCount > div {
+  background-color: var(--color-black);
+}
+
+.cartIconWrapper .cartIcon {
+  width: 80%;
+  height: 80%;
+}
+
+@media screen and (max-width: 480px) {
+  .cartIconWrapper svg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .cartIconWrapper .cartIcon {
+    width: 60%;
+    height: 60%;
+  }
+}

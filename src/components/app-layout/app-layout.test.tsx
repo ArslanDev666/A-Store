@@ -19,10 +19,10 @@ describe('Footer component', () => {
       expect(screen.getByTestId('footer')).toBeInTheDocument();
     });
 
-    it('should not be render footer', () => {
-      render(<AppLayout hasFooter={false} />, { wrapper: BrowserRouter });
+    it('should render cart', () => {
+      render(<AppLayout hasFooter hasCart />, { wrapper: BrowserRouter });
 
-      expect(screen.queryByTestId('footer')).toBeNull();
+      expect(screen.getByTestId('cart')).toBeInTheDocument();
     });
   });
 });
