@@ -2,6 +2,7 @@ import { CartProductType } from 'types/product';
 
 export type InitCartActionType = {
   products: CartProductType[];
+  totalPrice: number;
 };
 
 export type AddCartActionType = {

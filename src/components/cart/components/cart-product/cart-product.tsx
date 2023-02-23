@@ -31,10 +31,10 @@ const CartProduct = memo(({ product }: PropsType) => {
   const dispatch = useAppDispatch();
 
   const handleIncreaseProductClick = () => {
-    dispatch(cartActions.increaseProductCount(key));
+    dispatch(cartActions.increaseProduct(key));
   };
   const handleDecreaseProductClick = () => {
-    dispatch(cartActions.decreaseProductCount(key));
+    dispatch(cartActions.decreaseProduct(key));
   };
   const handleDeleteProductClick = () => {
     dispatch(cartActions.deleteProduct(key));

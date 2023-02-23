@@ -57,8 +57,8 @@ export const cartProductMock: CartProductType = {
   preview: 'http://qa-games.ru/astore/public/images/89787126.png',
   title: 'Худи с 3D-стикерами',
   price: 4099,
-  count: 2,
+  count: 1,
   params: [],
-  totalPrice: 8198,
+  totalPrice: 4099,
   key: '123123',
 };

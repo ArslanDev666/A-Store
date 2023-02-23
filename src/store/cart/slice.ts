@@ -16,7 +16,7 @@ type StateProductType = ProductType | CustomProductType | null;
 
 export default StateProductType;
 
-type ProductStateType = {
+export type ProductStateType = {
   products: CartProductType[];
   totalPrice: number;
 };
@@ -30,6 +30,7 @@ const NAME = 'cart';
 
 const init: CaseReducer<ProductStateType, PayloadAction<InitCartActionType>> = (state, action) => {
   state.products = action.payload.products;
+  state.totalPrice = action.payload.totalPrice;
 };
 
 const add: CaseReducer<ProductStateType, PayloadAction<AddCartActionType>> = (state, action) => {
@@ -61,7 +62,7 @@ const prepareAdd = (product: PrepareAddPayloadType): { payload: AddCartActionTyp
   };
 };
 
-const increaseProductCount: CaseReducer<
+const increaseProduct: CaseReducer<
   ProductStateType,
   PayloadAction<IncreaseProductCountActionType>
 > = (state, action) => {
@@ -71,12 +72,13 @@ const increaseProductCount: CaseReducer<
   const product = state.products[findItemIndex];
 
   state.totalPrice += product.price;
-
+  console.log(product, 'product');
+  
   state.products[findItemIndex].count += 1;
   state.products[findItemIndex].totalPrice += product.price;
 };
 
-const decreaseProductCount: CaseReducer<
+const decreaseProduct: CaseReducer<
   ProductStateType,
   PayloadAction<DecreaseProductCountActionType>
 > = (state, action) => {
@@ -120,8 +122,8 @@ export const { reducer: cartReducer, actions: cartActions } = createSlice({
       reducer: add,
       prepare: prepareAdd,
     },
-    increaseProductCount,
-    decreaseProductCount,
+    increaseProduct,
+    decreaseProduct,
     deleteProduct,
   },
 });
