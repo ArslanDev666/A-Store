@@ -1,6 +1,6 @@
 export type ParamsNamesProductType = 'color' | 'size' | 'sticker' | 'model';
 
-const PARAM_TEXT: Record<ParamsNamesProductType, string> = {
+export const PARAMS_TEXTS: Record<ParamsNamesProductType, string> = {
   color: 'Цвет',
   size: 'Размер',
   sticker: 'Номер стикера',
@@ -8,4 +8,4 @@ const PARAM_TEXT: Record<ParamsNamesProductType, string> = {
 };
 
 export const getNameParamText = (paramName: ParamsNamesProductType): string =>
-  PARAM_TEXT[paramName] || '';
+  PARAMS_TEXTS[paramName] || '';

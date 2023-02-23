@@ -23,7 +23,7 @@ const CartSidebar = () => {
         <ul className={styles.sidebarProducts}>
           {products.map((product) => {
             return (
-              <li key={product.key}>
+              <li key={product.key} data-test-id='cart-sidebar-item'>
                 <CartProduct product={product} />
               </li>
             );

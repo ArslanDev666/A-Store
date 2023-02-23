@@ -59,10 +59,14 @@ const CartProduct = memo(({ product }: PropsType) => {
           </Typography.Text>
 
           {!!params.length && (
-            <div className={styles.productParams}>
+            <div className={styles.productParams} data-test-id='cart-product-params'>
               {params.map((param) => {
                 return (
-                  <Typography.Text key={param.label} view='secondary-medium'>
+                  <Typography.Text
+                    key={param.label}
+                    view='secondary-medium'
+                    dataTestId='cart-product-param'
+                  >
                     {param.label}: {param.value}
                   </Typography.Text>
                 );
@@ -72,6 +76,7 @@ const CartProduct = memo(({ product }: PropsType) => {
         </div>
         <div className={styles.productCount}>
           <IconButton
+            dataTestId='card-product-decrease'
             view='primary'
             size='xxs'
             icon={MinusCircleMIcon}
@@ -80,6 +85,7 @@ const CartProduct = memo(({ product }: PropsType) => {
           />
           <div className={styles.productCountValue}>{count}</div>
           <IconButton
+            dataTestId='card-product-increase'
             view='primary'
             size='xxs'
             icon={PlusCircleMIcon}
@@ -98,6 +104,7 @@ const CartProduct = memo(({ product }: PropsType) => {
         </Typography.Text>
       </div>
       <IconButton
+        dataTestId='card-product-delete'
         view='primary'
         size='xxs'
         icon={CrossCircleMIcon}

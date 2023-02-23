@@ -72,8 +72,7 @@ const increaseProduct: CaseReducer<
   const product = state.products[findItemIndex];
 
   state.totalPrice += product.price;
-  console.log(product, 'product');
-  
+
   state.products[findItemIndex].count += 1;
   state.products[findItemIndex].totalPrice += product.price;
 };

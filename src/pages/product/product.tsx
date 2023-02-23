@@ -66,6 +66,8 @@ const ProductPage = () => {
   const [values, setValues] = useState<FormStateType | null>(null);
 
   useEffect(() => {
+    if (!productId) return;
+
     dispatch(productActions.request({ id: productId! }));
 
     return () => {
@@ -156,7 +158,7 @@ const ProductPage = () => {
                 <Amount value={product.price} currency='RUR' minority={1} bold='full' />
               </Typography.TitleResponsive>
 
-              <form onSubmit={handleFormSubmit} className={styles.form}>
+              <form onSubmit={handleFormSubmit} className={styles.form} aria-label='form'>
                 {values && productParams && (
                   <Space size='m' fullWidth dataTestId='product-params'>
                     {productParams.sizes?.length ? (

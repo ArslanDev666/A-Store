@@ -1,8 +1,9 @@
-import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+import { createMemoryRouter, RouteObject, RouterProvider } from 'react-router-dom';
 import { fireEvent, screen } from '@testing-library/react';
 import { setupServer } from 'msw/node';
 
 import { store } from 'store';
+import { cartActions } from 'store/cart';
 
 import { renderWithProviders } from 'utils/tests-utils';
 
@@ -22,7 +23,7 @@ describe('Render tests', () => {
 });
 
 describe('With server tests', () => {
-  const routerConfig = [
+  const routerConfig: RouteObject[] = [
     {
       path: ROUTES.product,
       element: <ProductPage />,
@@ -33,7 +34,10 @@ describe('With server tests', () => {
 
   beforeAll(() => server.listen());
 
-  afterEach(() => server.resetHandlers());
+  afterEach(() => {
+    jest.clearAllMocks();
+    server.resetHandlers();
+  });
 
   afterAll(() => server.close());
 
@@ -120,9 +124,23 @@ describe('With server tests', () => {
       expect(await screen.findByTestId('product-select-model')).toBeInTheDocument();
     });
 
-    it.skip('should call alert on submit click', async () => {
-      renderWithProviders(<RouterProvider router={router} />, { store });
-      fireEvent.click(await screen.findByText('В корзину'));
+    const mockDispatch = jest.fn();
+
+    jest.mock('store/index.ts', () => ({
+      useAppDispatch: mockDispatch,
+    }));
+
+    it('should call dispatch on submit click', async () => {
+      renderWithProviders(<ProductPage />, {
+        preloadedState: { product: { isLoading: false, hasError: false, product: productMock } },
+      });
+      const form = await screen.findByRole('form');
+      fireEvent.submit(form);
+
+      setTimeout(() => {
+        expect(mockDispatch).toHaveBeenCalledTimes(1);
+        expect(mockDispatch).toHaveBeenCalledWith(cartActions.add);
+      }, 0);
     });
   });
 });

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot testing should render App 1`] = `
+<div
+  className="layout"
+  data-test-id="app-layout"
+>
+  <header
+    className="header"
+    data-test-id="header"
+  >
+    <a
+      className="logo"
+      href="/"
+      onClick={[Function]}
+    >
+      A-Store
+    </a>
+    <button
+      className="sidebarToggle"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        меню
+      </span>
+      <svg
+        fill="currentColor"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M3 13.25h18v-2.5H3v2.5zm0-7.5v2.5h18v-2.5H3zm0 12.5h18v-2.5H3v2.5z"
+        />
+      </svg>
+    </button>
+  </header>
+  <div
+    className="content"
+  >
+    <div
+      className="root"
+      data-test-id="home-page"
+    >
+      <h1
+        className="typography__component_h1nzy typography__styrene-medium_k22x5 typography__medium_h1nzy"
+        hidden={true}
+      >
+        A-Store
+      </h1>
+      <a
+        className="card"
+        data-test-id="card"
+        href="/sdelano-v-alfe"
+        onClick={[Function]}
+      >
+        <img
+          alt="Сделано в Альфе"
+          className="cardImage"
+          src="banner-made-in-alfa.jpeg"
+        />
+        <div
+          className="cardContent"
+        >
+          <h2
+            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+          >
+            Сделано в Альфе
+          </h2>
+        </div>
+      </a>
+      <a
+        className="card"
+        data-test-id="card"
+        href="/svoy-dizain"
+        onClick={[Function]}
+      >
+        <img
+          alt="Свой дизайн"
+          className="cardImage"
+          src="banner-own-design.jpeg"
+        />
+        <div
+          className="cardContent"
+        >
+          <h2
+            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+          >
+            Свой дизайн
+          </h2>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div
+    className="cart"
+  />
+</div>
+`;

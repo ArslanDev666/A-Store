@@ -21,5 +21,18 @@ describe('CardSidebar tests', () => {
 
       expect(screen.getByTestId('cart')).toBeInTheDocument();
     });
+
+    it('should not render when empty products', () => {
+      renderWithProviders(
+        <MemoryRouter>
+          <Cart />
+        </MemoryRouter>,
+        {
+          preloadedState: { cart: { products: [], totalPrice: 0 } },
+        }
+      );
+
+      expect(screen.queryByTestId('cart')).toBeNull();
+    });
   });
 });
