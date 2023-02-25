@@ -10,7 +10,7 @@ import { cartSelector, cartTotalPriceSelector } from 'store/cart';
 
 import styles from './cart-sidebar.module.css';
 
-import { CartProduct } from '../cart-product';
+import { CartProduct } from '../../../cart-product';
 
 const CartSidebar = () => {
   const products = useAppSelector(cartSelector);
