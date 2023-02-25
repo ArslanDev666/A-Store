@@ -46,7 +46,7 @@ exports[`snapshot testing should render App 1`] = `
       data-test-id="home-page"
     >
       <h1
-        className="typography__component_h1nzy typography__styrene-medium_k22x5 typography__medium_h1nzy"
+        className="typography__component_a3ydv typography__styrene-medium_1ixkt typography__medium_a3ydv"
         hidden={true}
       >
         A-Store
@@ -66,7 +66,7 @@ exports[`snapshot testing should render App 1`] = `
           className="cardContent"
         >
           <h2
-            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            className="typography__component_a3ydv typography__styrene-medium_1x9yf typography__bold_a3ydv"
           >
             Сделано в Альфе
           </h2>
@@ -87,7 +87,7 @@ exports[`snapshot testing should render App 1`] = `
           className="cardContent"
         >
           <h2
-            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            className="typography__component_a3ydv typography__styrene-medium_1x9yf typography__bold_a3ydv"
           >
             Свой дизайн
           </h2>

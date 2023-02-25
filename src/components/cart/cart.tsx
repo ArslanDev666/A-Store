@@ -4,7 +4,7 @@ import { Amount } from '@alfalab/core-components/amount';
 import { Badge } from '@alfalab/core-components/badge';
 import { Circle } from '@alfalab/core-components/icon-view/circle';
 import { SidePanelResponsive } from '@alfalab/core-components/side-panel/responsive';
-import { TooltipDesktop } from '@alfalab/core-components/tooltip/desktop';
+import { Tooltip } from '@alfalab/core-components/tooltip';
 import { Typography } from '@alfalab/core-components/typography';
 
 import { MarketplaceMWhiteIcon } from '@alfalab/icons-classic/MarketplaceMWhiteIcon';
@@ -26,7 +26,7 @@ const Cart = memo(() => {
   const products = useAppSelector(cartSelector);
 
   const [openCart, setOpenCart] = React.useState(true);
-  const [openOrderForm, setOpenOrderForm] = React.useState(true);
+  const [openOrderForm, setOpenOrderForm] = React.useState(false);
 
   const totalLength = useMemo(
     () => products.reduce((acc, product) => (acc += product.count), 0),
@@ -43,7 +43,7 @@ const Cart = memo(() => {
 
   return (
     <>
-      <TooltipDesktop
+      <Tooltip
         content={
           <Typography.TitleResponsive tag='div' view='xsmall' weight='bold'>
             = <Amount value={totalPrice} currency='RUR' minority={1} bold='full' />
@@ -69,7 +69,7 @@ const Cart = memo(() => {
             <MarketplaceMWhiteIcon className={styles.cartIcon} />
           </Circle>
         </button>
-      </TooltipDesktop>
+      </Tooltip>
 
       <SidePanelResponsive open={openCart} onClose={handleCloseCart} className={styles.sidebar}>
         <SidePanelResponsive.Header

@@ -10,7 +10,7 @@ exports[`Footer component Render tests should render correctly 1`] = `
     data-test-id="container"
   >
     <span
-      className="typography__primary-medium_xcdcz typography__medium_xcdcz"
+      className="typography__primary-medium_vffdo typography__medium_vffdo"
     >
       © ООО «Альфа Фьюче Пипл», 
       2023

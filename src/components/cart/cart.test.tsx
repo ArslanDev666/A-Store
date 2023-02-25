@@ -10,6 +10,12 @@ import { Cart } from './cart';
 describe('CardSidebar tests', () => {
   describe('Render tests', () => {
     it('should render correctly', () => {
+      window.matchMedia = jest.fn().mockImplementation(() => ({
+        matches: false,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+      }));
+
       renderWithProviders(
         <MemoryRouter>
           <Cart />

@@ -24,6 +24,12 @@ describe('AppLayout component', () => {
     });
 
     it('should render cart', () => {
+      window.matchMedia = jest.fn().mockImplementation(() => ({
+        matches: false,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+      }));
+
       renderWithProviders(
         <MemoryRouter>
           <AppLayout hasFooter={false} />

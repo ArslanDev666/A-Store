@@ -6,20 +6,20 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
   data-test-id="navigation-sidebar"
 >
   <button
-    className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button navigationClose icon-button__tertiary_7jncp icon-button__component_7jncp"
+    className="button__component_xynzd button__ghost_xynzd button__s_xynzd button__component_bb2m4 button__ghost_bb2m4 cc-icon-button navigationClose icon-button__tertiary_wp6uq icon-button__component_wp6uq"
     data-test-id="navigation-sidebar-close"
     disabled={false}
     onClick={[Function]}
     type="button"
   >
     <span
-      className="button__text_onnkc button__stretchText_onnkc"
+      className="button__text_xynzd button__stretchText_xynzd"
     >
       <span
-        className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+        className="icon-button__iconWrapper_fkj1g icon-button__s_fkj1g"
       >
         <svg
-          className="icon-button__icon_gy47p"
+          className="icon-button__icon_fkj1g"
           fill="currentColor"
           focusable="false"
           height="30"
@@ -46,16 +46,16 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
       >
         <li>
           <div
-            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            className="typography__component_a3ydv typography__styrene-medium_1x9yf typography__bold_a3ydv"
             data-test-id="title"
           >
             <a
-              className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+              className="link__component_andsz link__primary_lv08g link__withoutUnderline_andsz"
               href="/sdelano-v-alfe"
               onClick={[Function]}
             >
               <span
-                className="link__text_1r33z"
+                className="link__text_andsz"
               >
                 Сделано в Альфе
               </span>
@@ -64,16 +64,16 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
         </li>
         <li>
           <div
-            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            className="typography__component_a3ydv typography__styrene-medium_1x9yf typography__bold_a3ydv"
             data-test-id="title"
           >
             <a
-              className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+              className="link__component_andsz link__primary_lv08g link__withoutUnderline_andsz"
               href="/svoy-dizain"
               onClick={[Function]}
             >
               <span
-                className="link__text_1r33z"
+                className="link__text_andsz"
               >
                 Свой дизайн
               </span>
@@ -82,16 +82,16 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
         </li>
         <li>
           <div
-            className="typography__component_h1nzy typography__styrene-medium_qohs3 typography__bold_h1nzy"
+            className="typography__component_a3ydv typography__styrene-medium_1x9yf typography__bold_a3ydv"
             data-test-id="title"
           >
             <a
-              className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+              className="link__component_andsz link__primary_lv08g link__withoutUnderline_andsz"
               href="/contact"
               onClick={[Function]}
             >
               <span
-                className="link__text_1r33z"
+                className="link__text_andsz"
               >
                 Контакты
               </span>
@@ -104,16 +104,16 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
       className="navigationCopyright"
     >
       <span
-        className="typography__primary-small_xcdcz typography__bold_xcdcz"
+        className="typography__primary-small_vffdo typography__bold_vffdo"
       >
         <a
-          className="link__component_1r33z link__primary_f5320 link__withoutUnderline_1r33z"
+          className="link__component_andsz link__primary_lv08g link__withoutUnderline_andsz"
           href="https://store.alfabank.ru/policy"
           rel="noreferrer noopener"
           target="_blank"
         >
           <span
-            className="link__text_1r33z"
+            className="link__text_andsz"
           >
             Политика конфиденциальности 
             <br />
@@ -129,7 +129,7 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
         className="navigationSocialLink"
       >
         <a
-          className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button icon-button__tertiary_7jncp icon-button__component_7jncp"
+          className="button__component_xynzd button__ghost_xynzd button__s_xynzd button__component_bb2m4 button__ghost_bb2m4 cc-icon-button icon-button__tertiary_wp6uq icon-button__component_wp6uq"
           data-test-id={null}
           disabled={false}
           href="info@alfabankstore.ru"
@@ -139,13 +139,13 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
           title="Ссылка на почту"
         >
           <span
-            className="button__text_onnkc button__stretchText_onnkc"
+            className="button__text_xynzd button__stretchText_xynzd"
           >
             <span
-              className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+              className="icon-button__iconWrapper_fkj1g icon-button__s_fkj1g"
             >
               <svg
-                className="icon-button__icon_gy47p"
+                className="icon-button__icon_fkj1g"
                 fill="currentColor"
                 focusable="false"
                 height="24"
@@ -167,7 +167,7 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
         className="navigationSocialLink"
       >
         <a
-          className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button icon-button__tertiary_7jncp icon-button__component_7jncp"
+          className="button__component_xynzd button__ghost_xynzd button__s_xynzd button__component_bb2m4 button__ghost_bb2m4 cc-icon-button icon-button__tertiary_wp6uq icon-button__component_wp6uq"
           data-test-id={null}
           disabled={false}
           href="tel:+7 906 061-60-20"
@@ -177,13 +177,13 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
           title="Ссылка на телефон"
         >
           <span
-            className="button__text_onnkc button__stretchText_onnkc"
+            className="button__text_xynzd button__stretchText_xynzd"
           >
             <span
-              className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+              className="icon-button__iconWrapper_fkj1g icon-button__s_fkj1g"
             >
               <svg
-                className="icon-button__icon_gy47p"
+                className="icon-button__icon_fkj1g"
                 fill="currentColor"
                 focusable="false"
                 height="24"
@@ -205,7 +205,7 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
         className="navigationSocialLink"
       >
         <a
-          className="button__component_onnkc button__ghost_onnkc button__s_onnkc button__component_1qjkj button__ghost_1qjkj cc-icon-button icon-button__tertiary_7jncp icon-button__component_7jncp"
+          className="button__component_xynzd button__ghost_xynzd button__s_xynzd button__component_bb2m4 button__ghost_bb2m4 cc-icon-button icon-button__tertiary_wp6uq icon-button__component_wp6uq"
           data-test-id={null}
           disabled={false}
           href="https://wa.me/79060616020"
@@ -215,13 +215,13 @@ exports[`NavigationSidebar component Render tests should render correctly 1`] = 
           title="Ссылка на whatsApp"
         >
           <span
-            className="button__text_onnkc button__stretchText_onnkc"
+            className="button__text_xynzd button__stretchText_xynzd"
           >
             <span
-              className="icon-button__iconWrapper_gy47p icon-button__s_gy47p"
+              className="icon-button__iconWrapper_fkj1g icon-button__s_fkj1g"
             >
               <svg
-                className="icon-button__icon_gy47p"
+                className="icon-button__icon_fkj1g"
                 fill="currentColor"
                 focusable="false"
                 height="24"
