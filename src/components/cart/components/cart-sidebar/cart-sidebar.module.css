@@ -13,3 +13,9 @@
 
   font-style: italic;
 }
+
+.sidebarNext {
+  color: var(--color-text-white);
+  border-radius: 0;
+  background-color: var(--color-black);
+}

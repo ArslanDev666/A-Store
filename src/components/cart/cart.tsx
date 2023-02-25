@@ -25,15 +25,19 @@ const Cart = memo(() => {
   const totalPrice = useAppSelector(cartTotalPriceSelector);
   const products = useAppSelector(cartSelector);
 
-  const [open, setOpen] = React.useState(false);
+  const [openCart, setOpenCart] = React.useState(true);
+  const [openOrderForm, setOpenOrderForm] = React.useState(true);
 
   const totalLength = useMemo(
     () => products.reduce((acc, product) => (acc += product.count), 0),
     [products]
   );
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpenCart = () => setOpenCart(true);
+  const handleCloseCart = () => setOpenCart(false);
+
+  const handleOpenOrderForm = () => setOpenOrderForm(true);
+  const handleCloseOrderForm = () => setOpenOrderForm(false);
 
   if (totalLength === 0) return null;
 
@@ -47,7 +51,7 @@ const Cart = memo(() => {
         }
         colors='inverted'
       >
-        <button data-test-id='cart' className={styles.cart} type='button' onClick={handleOpen}>
+        <button data-test-id='cart' className={styles.cart} type='button' onClick={handleOpenCart}>
           <Circle
             size={CART_SIZE}
             bottomAddons={
@@ -66,7 +70,8 @@ const Cart = memo(() => {
           </Circle>
         </button>
       </TooltipDesktop>
-      <SidePanelResponsive open={open} onClose={handleClose} className={styles.sidebar}>
+
+      <SidePanelResponsive open={openCart} onClose={handleCloseCart} className={styles.sidebar}>
         <SidePanelResponsive.Header
           title={CART_TITLE}
           leftAddons={null}
@@ -75,7 +80,7 @@ const Cart = memo(() => {
           sticky
         />
         <SidePanelResponsive.Content className={styles.sidebarContent}>
-          <CartSidebar />
+          <CartSidebar handleOpenOrderFormClick={handleOpenOrderForm} />
         </SidePanelResponsive.Content>
       </SidePanelResponsive>
     </>
