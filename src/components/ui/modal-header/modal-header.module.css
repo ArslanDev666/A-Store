@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-l);
+}
+
+.headerTitle {
+  font-style: italic;
+}
+
+@media screen and (max-width: 480px) {
+  .headerTitle {
+    font-size: 14px;
+  }
+}

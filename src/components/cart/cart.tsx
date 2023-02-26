@@ -3,11 +3,15 @@ import React, { memo, useMemo } from 'react';
 import { Amount } from '@alfalab/core-components/amount';
 import { Badge } from '@alfalab/core-components/badge';
 import { Circle } from '@alfalab/core-components/icon-view/circle';
+import { ModalResponsive } from '@alfalab/core-components/modal/responsive';
 import { SidePanelResponsive } from '@alfalab/core-components/side-panel/responsive';
 import { Tooltip } from '@alfalab/core-components/tooltip';
 import { Typography } from '@alfalab/core-components/typography';
 
 import { MarketplaceMWhiteIcon } from '@alfalab/icons-classic/MarketplaceMWhiteIcon';
+
+import { OrderForm } from 'components/order-form';
+import { ModalHeader } from 'components/ui/modal-header';
 
 import { useAppSelector } from 'store';
 import { cartSelector, cartTotalPriceSelector } from 'store/cart';
@@ -83,6 +87,18 @@ const Cart = memo(() => {
           <CartSidebar handleOpenOrderFormClick={handleOpenOrderForm} />
         </SidePanelResponsive.Content>
       </SidePanelResponsive>
+
+      <ModalResponsive open={openOrderForm} onClose={handleCloseOrderForm} size='fullscreen'>
+        <ModalResponsive.Header
+          hasCloser={false}
+          sticky
+          className={styles.modalHeader}
+          contentClassName={styles.modalHeaderContent}
+        >
+          <ModalHeader title='Ваш заказ' handleCloseClick={handleCloseOrderForm} />
+        </ModalResponsive.Header>
+        <OrderForm />
+      </ModalResponsive>
     </>
   );
 });
