@@ -29,7 +29,7 @@ const Cart = memo(() => {
   const totalPrice = useAppSelector(cartTotalPriceSelector);
   const products = useAppSelector(cartSelector);
 
-  const [openCart, setOpenCart] = React.useState(true);
+  const [openCart, setOpenCart] = React.useState(false);
   const [openOrderForm, setOpenOrderForm] = React.useState(false);
 
   const totalLength = useMemo(
@@ -95,7 +95,11 @@ const Cart = memo(() => {
           className={styles.modalHeader}
           contentClassName={styles.modalHeaderContent}
         >
-          <ModalHeader title='Ваш заказ' handleCloseClick={handleCloseOrderForm} />
+          <ModalHeader
+            title='Ваш заказ'
+            handleCloseClick={handleCloseOrderForm}
+            handleBackClick={handleCloseOrderForm}
+          />
         </ModalResponsive.Header>
         <OrderForm />
       </ModalResponsive>
