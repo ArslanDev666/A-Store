@@ -1,2 +1,41 @@
+.formWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: var(--gap-4xl) 0;
+  gap: var(--gap-3xl);
+}
+
 .form {
+  width: 100%;
+}
+
+.cartProducts {
+  flex-shrink: 0;
+
+  max-width: 560px;
+}
+
+@media screen and (max-width: 1200px) {
+  .formWrapper {
+    gap: var(--gap-l);
+  }
+
+  .form,
+  .cartProducts {
+    max-width: 450px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .formWrapper {
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .form,
+  .cartProducts {
+    max-width: 600px;
+  }
 }

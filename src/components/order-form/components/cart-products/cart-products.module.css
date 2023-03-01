@@ -1,0 +1,19 @@
+.deliveryPriceWrapper {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+  text-align: right;
+}
+
+.productsPrice {
+  display: block;
+
+  text-align: right;
+
+  font-style: italic;
+}
+
+.totalPrice {
+  font-style: italic;
+}
