@@ -1,0 +1,21 @@
+.root {
+  padding: var(--gap-3xl) 0 var(--gap-6xl);
+}
+
+.text {
+  margin-top: var(--gap-6xl);
+}
+
+@media screen and (max-width: 768px) {
+  .root {
+    padding: var(--gap-xl) 0 var(--gap-3xl);
+  }
+
+  .text {
+    margin-top: var(--gap-2xl);
+  }
+
+  .cart {
+    width: 100%;
+  }
+}

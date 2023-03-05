@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
+import { ContactPage } from 'pages/contact';
 import { HomePage } from 'pages/home';
 import { MadeInAlfaPage } from 'pages/made-in-alfa';
 import { OwnDesignPage } from 'pages/own-design';
@@ -42,11 +43,7 @@ export const routerConfig: RouteObject[] = [
       },
       {
         path: ROUTES.contact,
-        element: <div>Контакты</div>,
-      },
-      {
-        path: ROUTES.cart,
-        element: <div>Корзина</div>,
+        element: <ContactPage />,
       },
     ],
   },

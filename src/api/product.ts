@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-import { PRODUCTS_API } from 'utils/products-api';
+import { PRODUCTS_API } from 'utils/const';
 
 import { CustomProductType, ProductType } from 'types/product';
 

@@ -5,7 +5,7 @@ import { Amount } from '@alfalab/core-components/amount';
 import { Gap } from '@alfalab/core-components/gap';
 import { Typography } from '@alfalab/core-components/typography';
 
-import { getProductUrl } from 'utils/product-url';
+import { getProductUrl } from 'utils/functions/product-url';
 
 import { CustomProductType, ProductType } from 'types/product';
 

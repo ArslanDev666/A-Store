@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-import { PRODUCTS_API } from 'utils/products-api';
+import { PRODUCTS_API } from 'utils/const';
 
 import { ownDesignProductsMock } from '../data/products';
 

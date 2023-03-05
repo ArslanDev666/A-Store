@@ -13,7 +13,7 @@ import { PlusCircleMIcon } from '@alfalab/icons-glyph/PlusCircleMIcon';
 import { useAppDispatch } from 'store';
 import { cartActions } from 'store/cart';
 
-import { getProductUrl } from 'utils/product-url';
+import { getProductUrl } from 'utils/functions/product-url';
 
 import { CartProductType } from 'types/product';
 

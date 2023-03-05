@@ -1,4 +1,8 @@
-import { getNameParamText, PARAMS_TEXTS, ParamsNamesProductType } from './../get-name-param';
+import {
+  getNameParamText,
+  PARAMS_TEXTS,
+  ParamsNamesProductType,
+} from '../functions/get-name-param';
 
 describe('ggetNameParamText tests', () => {
   it('should get color name', () => {

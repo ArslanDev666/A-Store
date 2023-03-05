@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
-import { getProductUrl } from 'utils/product-url';
+import { getProductUrl } from 'utils/functions/product-url';
 
 import imageUrl from 'assets/images/home-page/banner-made-in-alfa.jpeg';
 

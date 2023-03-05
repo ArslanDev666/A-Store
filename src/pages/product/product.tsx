@@ -20,8 +20,8 @@ import { useAppDispatch } from 'store';
 import { cartActions } from 'store/cart';
 import { isLoadingSelector, productActions, productSelector } from 'store/product';
 
-import { getNameParamText, ParamsNamesProductType } from 'utils/get-name-param';
-import { getProductSelectValues } from 'utils/get-product-select-values';
+import { getNameParamText, ParamsNamesProductType } from 'utils/functions/get-name-param';
+import { getProductSelectValues } from 'utils/functions/get-product-select-values';
 
 import { CartProductType, CustomProductType, ProductType } from 'types/product';
 
@@ -223,7 +223,7 @@ const ProductPage = () => {
                         dataTestId='product-select-model'
                       />
                     )}
-                  </Space>  
+                  </Space>
                 )}
                 <Gap size='l' />
 

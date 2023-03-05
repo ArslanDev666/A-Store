@@ -13,6 +13,8 @@ import { WhatsappMIcon } from '@alfalab/icons-logotype/WhatsappMIcon';
 
 import { Title } from 'components/ui/title';
 
+import { PRIVACY_POLICY_LINK } from 'utils/const';
+
 import { ROUTES } from 'routes/constants';
 
 import styles from './navigation-sidebar.module.css';
@@ -49,8 +51,6 @@ export const SOCIALS_LINKS = [
     text: 'Ссылка на whatsApp',
   },
 ];
-
-export const PRIVACY_POLICY_LINK = 'https://store.alfabank.ru/policy';
 
 const NavigationSidebar = () => {
   const { contentRef, onClose } = React.useContext(DrawerContext);
