@@ -26,6 +26,8 @@ export const initialState: ProductStateType = {
   totalPrice: 0,
 };
 
+const MIN_PRODUCT_COUNT = 1;
+
 const NAME = 'cart';
 
 const init: CaseReducer<ProductStateType, PayloadAction<InitCartActionType>> = (state, action) => {
@@ -89,7 +91,8 @@ const decreaseProduct: CaseReducer<
 
   state.totalPrice -= product.price;
 
-  if (product.count - 1 === 0) {
+  // Если количество продукта равно минимальному, то удаляем из корзины.
+  if (product.count === MIN_PRODUCT_COUNT) {
     state.products = state.products.filter((item) => item.key !== key);
     return;
   }

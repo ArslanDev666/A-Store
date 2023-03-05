@@ -39,13 +39,14 @@ const OwnDesignPage = () => {
           <>
             <ul className={styles.categories}>
               {products.map((category: CategoryType) => (
-                <ProductCategory
-                  title={category.title}
-                  description={category.description}
-                  products={category.products}
-                  id={category.id}
-                  key={category.id}
-                />
+                <li key={category.id}>
+                  <ProductCategory
+                    title={category.title}
+                    description={category.description}
+                    products={category.products}
+                    id={category.id}
+                  />
+                </li>
               ))}
             </ul>
             <Gap size='8xl' />

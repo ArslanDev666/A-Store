@@ -161,7 +161,7 @@ const ProductPage = () => {
               <form onSubmit={handleFormSubmit} className={styles.form} aria-label='form'>
                 {values && productParams && (
                   <Space size='m' fullWidth dataTestId='product-params'>
-                    {productParams.sizes?.length ? (
+                    {!!productParams.sizes?.length && (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
@@ -175,9 +175,9 @@ const ProductPage = () => {
                         labelView='outer'
                         dataTestId='product-select-size'
                       />
-                    ) : null}
+                    )}
 
-                    {productParams.colors?.length ? (
+                    {!!productParams.colors?.length && (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
@@ -191,9 +191,9 @@ const ProductPage = () => {
                         labelView='outer'
                         dataTestId='product-select-color'
                       />
-                    ) : null}
+                    )}
 
-                    {productParams.stickers?.length ? (
+                    {!!productParams.stickers?.length && (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
@@ -207,9 +207,9 @@ const ProductPage = () => {
                         labelView='outer'
                         dataTestId='product-select-sticker'
                       />
-                    ) : null}
+                    )}
 
-                    {productParams.models?.length ? (
+                    {!!productParams.models?.length && (
                       <SelectResponsive
                         allowUnselect={true}
                         size='s'
@@ -222,8 +222,8 @@ const ProductPage = () => {
                         labelView='outer'
                         dataTestId='product-select-model'
                       />
-                    ) : null}
-                  </Space>
+                    )}
+                  </Space>  
                 )}
                 <Gap size='l' />
 
