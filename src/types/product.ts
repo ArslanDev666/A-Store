@@ -1,3 +1,5 @@
+import { ParamsNamesProductType } from 'utils/functions/get-name-param';
+
 export type ProductType = {
   /**
    * Id товара
@@ -53,7 +55,11 @@ export type CustomProductType = Omit<ProductType, 'models'> & {
   stickerNumbers?: number[];
 };
 
-export type ProductParamType = { label: string; value: string };
+export type ProductParamType = {
+  label: string;
+  value: string;
+  key: ParamsNamesProductType;
+};
 
 export type CartProductType = Pick<ProductType, 'id' | 'preview' | 'price' | 'title'> & {
   /**

@@ -27,7 +27,7 @@ describe('CardProduct tests', () => {
     it('should render params', () => {
       const product: CartProductType = {
         ...cartProductMock,
-        params: [{ label: 'color', value: '1' }],
+        params: [{ label: 'color', value: '1', key: 'color' }],
       };
 
       renderWithProviders(

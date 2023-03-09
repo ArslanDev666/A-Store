@@ -7,6 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import { cartReducer } from './cart';
 import { madeInAlfaReducer } from './made-in-alfa';
 import { notificationsReducer } from './notifications';
+import { orderReducer } from './order';
 import { ownDesignReducer } from './own-design';
 import { productReducer } from './product';
 import { rootSaga } from './root-saga';
@@ -26,6 +27,7 @@ const reducers = combineReducers({
   madeInAlfa: madeInAlfaReducer,
   product: productReducer,
   cart: cartReducer,
+  order: orderReducer,
 });
 
 const rootReducer = persistReducer(persistConfig, reducers);

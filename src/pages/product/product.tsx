@@ -106,12 +106,13 @@ const ProductPage = () => {
     e.preventDefault();
 
     const params: CartProductType['params'] = values
-      ? Object.keys(values).map((key) => {
-          const param = values[key as ParamsNamesProductType] as OptionShape;
+      ? (Object.keys(values) as ParamsNamesProductType[]).map((key) => {
+          const param = values[key] as OptionShape;
 
           return {
-            label: getNameParamText(key as ParamsNamesProductType),
+            label: getNameParamText(key),
             value: param.value,
+            key,
           };
         })
       : [];

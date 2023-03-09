@@ -1,3 +1,5 @@
+import { OrderDeliveryType } from 'types/order';
+
 export enum DeliveryValuesEnum {
   /**
    * Доставка по России
@@ -25,7 +27,7 @@ export type DeliveryValueType = {
   /**
    * Текст для блока с формой
    */
-  label: string;
+  label: OrderDeliveryType;
 };
 
 export type DeliveryValuesType = Record<DeliveryValuesEnum, DeliveryValueType>;
