@@ -33,7 +33,6 @@
   },
   "scripts": {
     "pre-deploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -65,7 +64,6 @@
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "gh-pages": "^5.0.0",
     "@types/react-test-renderer": "^18.0.0",
     "@types/redux-persist": "^4.3.1",
     "@types/uuid": "^9.0.0",
