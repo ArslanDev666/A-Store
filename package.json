@@ -1,7 +1,8 @@
 {
   "name": "a-store",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "homepage": "https://arslandev666.github.io/a-store/",
   "author": "Arslan Mustafin <arslan.mustafin.dev@gmail.com>",
   "jest": {
     "transformIgnorePatterns": [
@@ -24,6 +25,7 @@
     "@types/react-dom": "^18.0.10",
     "axios": "^1.3.3",
     "classnames": "^2.3.2",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.3",
@@ -38,6 +40,8 @@
     "yup": "^1.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
