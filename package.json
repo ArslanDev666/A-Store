@@ -2,6 +2,7 @@
   "name": "a-store",
   "version": "0.1.0",
   "private": true,
+  "author": "Arslan Mustafin <arslan.mustafin.dev@gmail.com>",
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/(?!axios)/"
