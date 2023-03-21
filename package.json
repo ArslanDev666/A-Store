@@ -2,7 +2,7 @@
   "name": "a-store",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://arslandev666.github.io/a-store/",
+  "homepage": "https://arslandev666.github.io/A-Store/",
   "author": "Arslan Mustafin <arslan.mustafin.dev@gmail.com>",
   "jest": {
     "transformIgnorePatterns": [
